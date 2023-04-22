@@ -4,8 +4,8 @@
 
 sudo apt install git curl wget zsh gawk btop htop neofetch firefox nala micro ncdu exa gh lolcat fzf tree bat tldr autojump kitty timeshift gimp flameshot neovim cava tty-clock steam uget tiled
 
-echo "Some Tools that need Special repos"
 echo " "
+echo "Some Tools that need Special repos"
 echo "Pfetch"
 echo "Pipes.sh"
 echo "Pokemon Colorscripts"
