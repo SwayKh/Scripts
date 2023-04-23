@@ -7,10 +7,12 @@ echo "Downloading Latest Release"
 
 # Download the archive
 wget https://github.com/horriblename/lf/releases/latest/download/lf-linux-amd64.tar.gz 
+
 # Extract to /usr/bin
 mkdir -p ~/bin
 sudo tar -xvzf lf-linux-amd64.tar.gz -C ~/bin/
 chmod +x ~/bin/lf
+
 # Remove the archive
 rm lf-linux-amd64.tar.gz
 
@@ -22,9 +24,22 @@ mkdir -p ~/.config/lf
 cp -a dotfiles/lf ~/.config/lf
 
 
+echo "Installing dependencies"
+if [ -f /etc/debian_version ]; then
+    # Debian/Ubuntu
+    sudo apt-get update
+    sudo apt-get install -y libssl-dev libmagic-dev chafa
+elif [ -f /etc/redhat-release ]; then
+    # CentOS/RHEL/Fedora
+    sudo yum install -y openssl-devel file-devel chafa
+elif [ -f /etc/arch-release ]; then
+    # Arch Linux
+    sudo pacman -S openssl libmagic chafa
+else
+    echo "Unsupported distribution. Please install libssl-dev, libmagic-dev, and chafa manually."
+fi
+
 echo "Fetching and Compiling ctpv"
-sudo apt install libssl-dev libmagic-dev
-sudo apt install chafa
 git clone https://github.com/NikitaIvanovV/ctpv
 cd ctpv
 make

@@ -2,7 +2,7 @@
 
 # Install scipt to install programs on ubuntu based system
 
-sudo apt install git curl wget zsh gawk btop htop neofetch firefox nala micro ncdu exa gh lolcat fzf tree bat tldr autojump kitty timeshift gimp flameshot neovim cava tty-clock steam uget tiled
+sudo apt install git curl wget zsh gawk btop htop neofetch firefox nala micro feh ncdu exa gh lolcat fzf tree bat tldr autojump kitty timeshift gimp flameshot neovim cava tty-clock steam uget tiled
 
 echo " "
 echo "Some Tools that need Special repos"
