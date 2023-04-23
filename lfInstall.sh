@@ -9,9 +9,9 @@ echo "Downloading Latest Release"
 wget https://github.com/horriblename/lf/releases/latest/download/lf-linux-amd64.tar.gz 
 
 # Extract to /usr/bin
-mkdir -p ~/bin
-sudo tar -xvzf lf-linux-amd64.tar.gz -C ~/bin/
-chmod +x ~/bin/lf
+mkdir -p $HOME/bin
+sudo tar -xvzf lf-linux-amd64.tar.gz -C $HOME/bin/
+chmod +x $HOME/bin/lf
 
 # Remove the archive
 rm lf-linux-amd64.tar.gz
@@ -20,8 +20,8 @@ rm lf-linux-amd64.tar.gz
 echo "Downloading the configs"
 
 git clone https://github.com/SumitKhatri712/dotfiles
-mkdir -p ~/.config/lf
-cp -a dotfiles/lf ~/.config/lf
+mkdir -p $HOME/.config/lf
+cp -a dotfiles/lf $HOME/.config/lf
 
 
 echo "Installing dependencies"
