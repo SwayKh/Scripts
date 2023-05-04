@@ -8,7 +8,7 @@ echo "Downloading Latest Release"
 # Download the archive
 wget https://github.com/horriblename/lf/releases/latest/download/lf-linux-amd64.tar.gz 
 
-# Extract to /usr/bin
+# Extract to ~/bin
 mkdir -p $HOME/bin
 sudo tar -xvzf lf-linux-amd64.tar.gz -C $HOME/bin/
 chmod +x $HOME/bin/lf
