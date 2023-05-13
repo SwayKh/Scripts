@@ -11,7 +11,7 @@ wget https://github.com/horriblename/lf/releases/latest/download/lf-linux-amd64.
 # Extract to ~/bin
 mkdir -p $HOME/bin
 sudo tar -xvzf lf-linux-amd64.tar.gz -C $HOME/bin/
-chmod +x $HOME/bin/lf
+sudo chmod +x $HOME/bin/lf
 
 # Remove the archive
 rm lf-linux-amd64.tar.gz
@@ -21,7 +21,7 @@ echo "Downloading the configs"
 
 git clone https://github.com/SumitKhatri712/dotfiles
 mkdir -p $HOME/.config/lf
-cp -a dotfiles/lf $HOME/.config/lf
+cp -r dotfiles/.config/lf $HOME/.config/
 
 
 echo "Installing dependencies"
@@ -38,6 +38,12 @@ elif [ -f /etc/arch-release ]; then
 else
     echo "Unsupported distribution. Please install libssl-dev, libmagic-dev, and chafa manually."
 fi
+
+echo "Setting Up Go-Mono nerd font"
+wget https://github.com/ryanoasis/nerd-fonts/releases/latest/download/Go-Mono.zip
+unzip Go-Mono.zip
+sudo mv Go-Mono /usr/share/fonts/truetype/
+fc-cache -f -v
 
 echo "Fetching and Compiling ctpv"
 git clone https://github.com/NikitaIvanovV/ctpv
