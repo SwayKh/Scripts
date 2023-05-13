@@ -41,7 +41,8 @@ fi
 
 echo "Setting Up Go-Mono nerd font"
 wget https://github.com/ryanoasis/nerd-fonts/releases/latest/download/Go-Mono.zip
-unzip Go-Mono.zip
+mkdir -p Go-Mono
+unzip Go-Mono.zip -d Go-Mono
 sudo mv Go-Mono /usr/share/fonts/truetype/
 fc-cache -f -v
 
