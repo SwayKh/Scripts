@@ -20,13 +20,6 @@ rsync -avP "$HOME"/dotfiles/NalaHistory.md "$HOME"/Obsidian/Vault/Linux
 
 
 echo " "
-echo "=========Updating SyncDots.sh========="
-echo " "
-
-rsync -avP "$HOME"/SyncDots.sh "$HOME"/Scripts
-
-
-echo " "
 echo "=========Updating git repository========="
 echo " "
 
