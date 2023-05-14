@@ -9,9 +9,9 @@ echo "Downloading Latest Release"
 wget https://github.com/horriblename/lf/releases/latest/download/lf-linux-amd64.tar.gz 
 
 # Extract to ~/bin
-mkdir -p $HOME/bin
-sudo tar -xvzf lf-linux-amd64.tar.gz -C $HOME/bin/
-sudo chmod +x $HOME/bin/lf
+mkdir -p "$HOME"/bin
+sudo tar -xvzf lf-linux-amd64.tar.gz -C "$HOME"/bin/
+sudo chmod +x "$HOME"/bin/lf
 
 # Remove the archive
 rm lf-linux-amd64.tar.gz
@@ -20,8 +20,8 @@ rm lf-linux-amd64.tar.gz
 echo "Downloading the configs"
 
 git clone https://github.com/SumitKhatri712/dotfiles
-mkdir -p $HOME/.config/lf
-cp -r dotfiles/.config/lf $HOME/.config/
+mkdir -p "$HOME"/.config/lf
+cp -r dotfiles/.config/lf "$HOME"/.config/
 
 
 echo "Installing dependencies"
@@ -48,7 +48,7 @@ fc-cache -f -v
 
 echo "Fetching and Compiling ctpv"
 git clone https://github.com/NikitaIvanovV/ctpv
-cd ctpv
+cd ctpv || exit
 make
 sudo make install
 cd ..
