@@ -38,6 +38,8 @@ git commit -m "$commit"
 git push
 
 # Push the Scripts Folder
+
+commit=$(date)
 cd "$HOME"/Scripts || exit
 pwd
 git add .
