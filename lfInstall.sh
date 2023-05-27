@@ -22,6 +22,7 @@ echo "Downloading the configs"
 git clone https://github.com/SumitKhatri712/dotfiles
 mkdir -p "$HOME"/.config/lf
 cp -r dotfiles/.config/lf "$HOME"/.config/
+chmod +x "$HOME"/.config/lf/preview
 
 
 echo "Installing dependencies"
