@@ -1,5 +1,12 @@
 #!/bin/bash
 
+
+# Check if the script is running as root
+if [[ $EUID -ne 0 ]]; then
+    echo "This script must be run as root. Please run it with sudo or as root user."
+    exit 1
+fi
+
 # Set up LF file manager with one script, Installs all the packages and configs needed
 
 # Download the latest release from GitHub
