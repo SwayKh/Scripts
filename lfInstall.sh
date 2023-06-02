@@ -11,8 +11,8 @@ wget https://github.com/horriblename/lf/releases/latest/download/lf-linux-amd64.
 
 # Extract to ~/bin
 mkdir -p "$HOME"/bin
-sudo tar -xvzf lf-linux-amd64.tar.gz -C "$HOME"/bin/
-sudo chmod +x "$HOME"/bin/lf
+tar -xvzf lf-linux-amd64.tar.gz -C "$HOME"/bin/
+chmod +x "$HOME"/bin/lf
 
 export_line="export PATH=\"$HOME/bin:$PATH\""
 echo "$export_line" >> ~/.bashrc 
@@ -42,7 +42,7 @@ if [[ -f /etc/debian_version || -f /etc/lsb-release ]]; then
     if ! dpkg -s "${packages[@]}" >/dev/null 2>&1; then
         echo "Packages ${packages[*]} are not installed. Installing..."
         # Install the packages
-        sudo "$package_manager" install -y "${packages[@]}"
+        "$package_manager" install -y "${packages[@]}"
     else
         echo "Packages ${packages[*]} are already installed."
     fi
@@ -56,7 +56,7 @@ elif [[ -f /etc/fedora-release ]]; then
     if ! rpm -q "${packages[@]}" >/dev/null 2>&1; then
         echo "Packages ${packages[*]} are not installed. Installing..."
         # Install the packages
-        sudo "$package_manager" install -y "${packages[@]}"
+        "$package_manager" install -y "${packages[@]}"
     else
         echo "Packages ${packages[*]} are already installed."
     fi
@@ -70,7 +70,7 @@ elif [[ -f /etc/arch-release ]]; then
     if ! "$package_manager" -Qs "${packages[@]}" >/dev/null 2>&1; then
         echo "Packages ${packages[*]} are not installed. Installing..."
         # Install the packages
-        sudo "$package_manager" -S --noconfirm "${packages[@]}"
+        "$package_manager" -S --noconfirm "${packages[@]}"
     else
         echo "Packages ${packages[*]} are already installed."
     fi
@@ -85,14 +85,14 @@ echo "Setting Up Go-Mono nerd font"
 wget https://github.com/ryanoasis/nerd-fonts/releases/latest/download/Go-Mono.zip > /dev/null 2>&1
 mkdir -p Go-Mono
 unzip Go-Mono.zip -d Go-Mono > /dev/null 2>&1
-sudo mv Go-Mono /usr/share/fonts/truetype/
+mv Go-Mono /usr/share/fonts/truetype/
 fc-cache -f -v > /dev/null 2>&1
 
 echo "Fetching and Compiling ctpv"
 git clone https://github.com/NikitaIvanovV/ctpv
 cd ctpv || exit
 make > /dev/null 2>&1
-sudo make install >/dev/null 2>&1
+make install >/dev/null 2>&1
 cd ..
 rm -rf ctpv
 
