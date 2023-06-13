@@ -22,7 +22,7 @@ chmod +x "$HOME"/bin/lf
 
 export_line="export PATH=\"$HOME/bin:$PATH\""
 echo "$export_line" >> ~/.bashrc
-echo "Export $PATH:$HOME/bin command added to .bashrc"
+echo "Export \"$PATH:$HOME/bin\" command added to .bashrc"
 
 # Remove the archive
 rm lf-linux-amd64.tar.gz
