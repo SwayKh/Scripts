@@ -5,14 +5,17 @@ echo "=========Updating Linux Notes in Obsidian========="
 echo " "
 
 # Put nala history into file and trim the output to different file and then remove the original
-nala history | cut -c 45- --complement | cut -c -6 --complement > "$HOME"/Obsidian/Vault/Linux/NalaHistory.md
+# nala history | cut -c 45- --complement | cut -c -6 --complement > "$HOME"/Obsidian/Vault/Linux/NalaHistory.md
 
 # grep the zsh_history file for install keyword and put it in dotfiles/installed.md
-cut -b 1-15 --complement "$HOME"/.zsh_history | grep -e 'install' -e 'git clone' -e 'wget' > "$HOME"/Obsidian/Vault/Linux/Installed.md
+# cut -b 1-15 --complement "$HOME"/.zsh_history | grep -e 'install' -e 'git clone' -e 'wget' > "$HOME"/Obsidian/Vault/Linux/Installed.md
 
 #Clean up NalaHistory and Installed with AWK
-awk -i inplace '!seen[$0]++' "$HOME"/Obsidian/Vault/Linux/NalaHistory.md
-awk -i inplace '!seen[$0]++' "$HOME"/Obsidian/Vault/Linux/Installed.md
+# awk -i inplace '!seen[$0]++' "$HOME"/Obsidian/Vault/Linux/NalaHistory.md
+# awk -i inplace '!seen[$0]++' "$HOME"/Obsidian/Vault/Linux/Installed.md
+
+yay -Qeq > "$HOME"/Obsidian/Vault/Linux/YayHistory.md
+
 
 # No Need to put the Notes in the dotfiles directory, directly put it in the obsidian directory
 # # Needs to be rsynced,  symlinks don't work
