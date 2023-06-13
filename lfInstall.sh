@@ -46,6 +46,7 @@ else
     exit 1
 fi
 
+
 echo "Installing dependencies"
 
 # Check distribution similarity and perform package installation accordingly

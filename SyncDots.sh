@@ -41,7 +41,7 @@ git push
 # Push the Scripts Folder
 commit=$(date)
 
-cd "$HOME"/Scripts || exit
+cd "$HOME"/scripts || exit
 pwd
 git add .
 read -r -p "Enter a Commit: " temp
