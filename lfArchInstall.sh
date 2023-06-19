@@ -8,23 +8,26 @@
 
 # Set up LF file manager with one script, Installs all the packages and configs needed
 
-# Download the latest release from GitHub
-echo "Downloading Latest Release"
-wget https://github.com/horriblename/lf/releases/latest/download/lf-linux-amd64.tar.gz
+# No need for this code on Arch, LF is available in the Repo
 
-# Extract to ~/bin
-mkdir -p "$HOME"/bin
-tar -xvzf lf-linux-amd64.tar.gz -C "$HOME"/bin/
-chmod +x "$HOME"/bin/lf
+# # Download the latest release from GitHub
+# echo "Downloading Latest Release"
+# wget https://github.com/horriblename/lf/releases/latest/download/lf-linux-amd64.tar.gz
+# 
+# # Extract to ~/bin
+# mkdir -p "$HOME"/bin
+# tar -xvzf lf-linux-amd64.tar.gz -C "$HOME"/bin/
+# chmod +x "$HOME"/bin/lf
+# 
+# # Add to PATH
+# export_line="export PATH=\"$HOME/bin:$PATH\""
+# echo "$export_line" >> ~/.bashrc
+# echo "Export \"$PATH:$HOME/bin\" command added to .bashrc"
+# 
+# 
+# rm lf-linux-amd64.tar.gz
 
-# Add to PATH
-export_line="export PATH=\"$HOME/bin:$PATH\""
-echo "$export_line" >> ~/.bashrc
-echo "Export \"$PATH:$HOME/bin\" command added to .bashrc"
-
-
-rm lf-linux-amd64.tar.gz
-
+sudo pacman -S --needed lf
 
 read -n1 -r -p "Install my configs(sumitkhatri712)? [y,N]" doit 
 
@@ -44,13 +47,13 @@ packages=("openssl" "file")
 # Check if the packages are installed
 if ! $package_manager -Qs "${packages[@]}" >/dev/null 2>&1; then
     echo "Packages ${packages[*]} are not installed. Installing..."
-    sudo $package_manager -S --noconfirm "${packages[@]}"
+    sudo $package_manager -S --needed --noconfirm "${packages[@]}"
 else
     echo "Packages ${packages[*]} are already installed."
 fi
 
 echo "Setting Up Go-Mono nerd font"
-sudo pacman -S --noconfirm ttf-go-nerd
+sudo pacman -S --needed --noconfirm ttf-go-nerd
 
 echo "Fetching and Compiling ctpv, Hope you have yay installed"
 yay -S ctpv-git
