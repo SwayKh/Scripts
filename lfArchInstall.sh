@@ -1,32 +1,5 @@
 #!/bin/bash
 
-# Check if the script is running as root
-# if [[ $EUID -ne 0 ]]; then
-    # echo "This script must be run as root. Please run it with sudo or as root user."
-    # exit 1
-# fi
-
-# Set up LF file manager with one script, Installs all the packages and configs needed
-
-# No need for this code on Arch, LF is available in the Repo
-
-# # Download the latest release from GitHub
-# echo "Downloading Latest Release"
-# wget https://github.com/horriblename/lf/releases/latest/download/lf-linux-amd64.tar.gz
-# 
-# # Extract to ~/bin
-# mkdir -p "$HOME"/bin
-# tar -xvzf lf-linux-amd64.tar.gz -C "$HOME"/bin/
-# chmod +x "$HOME"/bin/lf
-# 
-# # Add to PATH
-# export_line="export PATH=\"$HOME/bin:$PATH\""
-# echo "$export_line" >> ~/.bashrc
-# echo "Export \"$PATH:$HOME/bin\" command added to .bashrc"
-# 
-# 
-# rm lf-linux-amd64.tar.gz
-
 sudo pacman -S --needed lf
 
 read -n1 -r -p "Install my configs(sumitkhatri712)? [y,N]" doit 
