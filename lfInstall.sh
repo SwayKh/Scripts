@@ -32,9 +32,9 @@ read -n1 -r -p "Install my configs and dependencies(sumitkhatri712)? [y,N]" doit
 
 if [[ "$doit" == "y" || "$doit" == "Y" ]]; then
 	echo "Downloading the configs"
-	git clone https://github.com/SumitKhatri712/dotfiles
+	git clone https://github.com/SumitKhatri712/dotfiles "$HOME"/dotfiles
 	mkdir -p "$HOME"/.config/lf
-	cp -r dotfiles/.config/lf "$HOME"/.config/
+	cp -r "$HOME"/dotfiles/.config/lf "$HOME"/.config/
 	chmod +x "$HOME"/.config/lf/preview
   sudo apt install bat cat tar unzip
 fi
@@ -55,7 +55,7 @@ echo "Setting Up Go-Mono nerd font"
 wget https://github.com/ryanoasis/nerd-fonts/releases/latest/download/Go-Mono.zip > /dev/null 2>&1
 mkdir -p Go-Mono
 unzip Go-Mono.zip -d Go-Mono > /dev/null 2>&1
-mv Go-Mono /usr/share/fonts/truetype/
+sudo mv Go-Mono /usr/share/fonts/truetype/
 fc-cache -f -v > /dev/null 2>&1
 
 echo "Fetching and Compiling ctpv"
