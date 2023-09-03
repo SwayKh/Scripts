@@ -16,7 +16,7 @@ echo " "
 
 yay -Qeq > "$HOME"/Obsidian/Vault/Linux/YayHistory.md
 
-
+cp "$HOME"/Obsidian/Vault/Linux\ Journal/Hyprland.md "$HOME"/dotfiles/.config/hypr/README.md 
 # No Need to put the Notes in the dotfiles directory, directly put it in the obsidian directory
 # # Needs to be rsynced,  symlinks don't work
 # rsync -avP "$HOME"/dotfiles/Installed.md "$HOME"/Obsidian/Vault/Linux
