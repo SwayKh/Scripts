@@ -2,11 +2,11 @@
 
 sudo pacman -S --needed lf
 
-read -n1 -r -p "Install my configs and dependencies(sumitkhatri712)? [y,N]" doit 
+read -n1 -r -p "Install my configs and dependencies(SwayKh)? [y,N]" doit 
 
 if [[ "$doit" == "y" || "$doit" == "Y" ]]; then
 	echo "Downloading the configs"
-	git clone https://github.com/SumitKhatri712/dotfiles "$HOME"/dotfiles
+	git clone https://github.com/SwayKh/dotfiles "$HOME"/dotfiles
 	mkdir -p "$HOME"/.config/lf
 	cp -r "$HOME"/dotfiles/.config/lf "$HOME"/.config/
 	chmod +x "$HOME"/.config/lf/preview
