@@ -1,1 +1,1 @@
-Scripts from Pop Os Linux Install
+# Scripts
