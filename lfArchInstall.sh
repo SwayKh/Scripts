@@ -26,8 +26,8 @@ else
     echo "Packages ${packages[*]} are already installed."
 fi
 
-echo "Setting Up Go-Mono nerd font"
-sudo pacman -S --needed --noconfirm ttf-go-nerd
+echo "Setting Up Hack nerd font"
+sudo pacman -S --needed --noconfirm ttf-hack-nerd
 
 echo "Fetching and Compiling ctpv, Hope you have yay installed"
 yay -S ctpv-git

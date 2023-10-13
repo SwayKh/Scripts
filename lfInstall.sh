@@ -13,7 +13,7 @@
 
 # Download the latest release from GitHub
 echo "Downloading Latest Release"
-wget https://github.com/horriblename/lf/releases/latest/download/lf-linux-amd64.tar.gz > /dev/null 2>&1
+wget https://github.com/gokcehan/lf/releases/latest/download/lf-linux-amd64.tar.gz > /dev/null 2>&1
 
 # Extract to ~/bin
 mkdir -p "$HOME"/bin
@@ -36,20 +36,8 @@ if [[ "$doit" == "y" || "$doit" == "Y" ]]; then
 	mkdir -p "$HOME"/.config/lf
 	cp -r "$HOME"/dotfiles/.config/lf "$HOME"/.config/
 	chmod +x "$HOME"/.config/lf/preview
-  sudo apt install bat cat tar unzip
+  sudo apt install bat cat tar unzip chafa glow
 fi
-
-# Installing dependencies
-
-echo "Installing dependencies"
-
-
-if command -v apt &>/dev/null; then
-    sudo apt install -y libmagic-dev libssl-dev
-elif command -v dnf &>/dev/null; then
-    sudo dnf install -y openssl-devel file-devel
-fi
-
 
 echo "Setting Up Go-Mono nerd font"
 wget https://github.com/ryanoasis/nerd-fonts/releases/latest/download/Go-Mono.zip > /dev/null 2>&1
@@ -58,13 +46,24 @@ unzip Go-Mono.zip -d Go-Mono > /dev/null 2>&1
 sudo mv Go-Mono /usr/share/fonts/truetype/
 fc-cache -f -v > /dev/null 2>&1
 
-echo "Fetching and Compiling ctpv"
-git clone https://github.com/NikitaIvanovV/ctpv
-cd ctpv || exit
-make > /dev/null 2>&1
-make install >/dev/null 2>&1
-cd ..
-rm -rf ctpv
 
+# Installing dependencies
+
+# echo "Installing dependencies"
+#
+# if command -v apt &>/dev/null; then
+#     sudo apt install -y libmagic-dev libssl-dev
+# elif command -v dnf &>/dev/null; then
+#     sudo dnf install -y openssl-devel file-devel
+# fi
+
+# echo "Fetching and Compiling ctpv"
+# git clone https://github.com/NikitaIvanovV/ctpv
+# cd ctpv || exit
+# make > /dev/null 2>&1
+# make install >/dev/null 2>&1
+# cd ..
+# rm -rf ctpv
+#
 echo " "
 echo "Please set your Terminal Font to a nerd-font before proceeding"
