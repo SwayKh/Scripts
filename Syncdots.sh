@@ -14,7 +14,7 @@ echo " "
 # awk -i inplace '!seen[$0]++' "$HOME"/Obsidian/Vault/Linux/NalaHistory.md
 # awk -i inplace '!seen[$0]++' "$HOME"/Obsidian/Vault/Linux/Installed.md
 
-yay -Qeq > "$HOME"/Obsidian/Vault/Linux/YayHistory.md
+paru -Qeq > "$HOME"/Obsidian/Vault/Linux/AurHistory.md
 
 cp "$HOME"/Obsidian/Vault/Linux\ Journal/Hyprland.md "$HOME"/dotfiles/.config/hypr/README.md 
 # No Need to put the Notes in the dotfiles directory, directly put it in the obsidian directory
