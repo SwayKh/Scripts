@@ -1,11 +1,11 @@
 #!/bin/bash
 
-hyprctl dispatch exec [workspace 1 silent] firefox 
+hyprctl dispatch exec [workspace 1 silent] mercury-browser 
 sleep 1
 hyprctl dispatch exec [workspace 2 silent] code
 sleep 1
-hyprctl dispatch exec [workspace 3 silent] "footclient -e lf"
+hyprctl dispatch exec [workspace 3 silent] "foot -e lf"
 sleep 1
-hyprctl dispatch exec [workspace 4 silent] footclient
+hyprctl dispatch exec [workspace 4 silent] foot
 sleep 1
 hyprctl dispatch exec [workspace 9 silent] obsidian
