@@ -1,6 +1,6 @@
 #!/bin/bash
 
-hyprctl dispatch exec [workspace 1 silent] mercury-browser 
+hyprctl dispatch exec [workspace 1 silent] thorium-browser 
 sleep 1
 hyprctl dispatch exec [workspace 2 silent] code
 sleep 1
