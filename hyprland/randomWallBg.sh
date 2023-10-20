@@ -1,5 +1,5 @@
 #!/bin/bash
-wall=$(command ls ~/wallpapers/Favourites/ | shuf -n 1)
-path="/home/sumit/wallpapers/Favourites/$wall"
+wall=$(command ls ~/wallpapers/Images/ | shuf -n 1)
+path="/home/sumit/wallpapers/Images/$wall"
 
-cp "$path" ~/.config/wall.png && swaybg -m fill -i "$path" &
+cp "$path" ~/.config/wall.jpg && swaybg -m fill -i "$path" &
