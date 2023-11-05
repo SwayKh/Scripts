@@ -8,14 +8,16 @@ configuration {
 	filter: "";
 	scroll-method: 0;
 	normalize-match: true;
-	show-icons: true;
-	icon-theme: "Zafiro-Nord-Black";
-/*	cache-dir: ;*/
+	show-icons: false;
+	display-drun:                "";
+  display-run:                 "";
+  display-filebrowser:         "";
+  display-window:              "";
+  icon-theme: "Papirus";
 	steal-focus: false;
+
+/*	cache-dir: ;*/
 /*	dpi: -1;*/
-  searchbar {
-    enabled: false;
-  }
 
 	/*---------- Matching setting ----------*/
 	matching: "normal";
@@ -30,7 +32,8 @@ configuration {
 	/*---------- Drun settings ----------*/
 	drun-categories: "";
 	drun-match-fields: "name,generic,exec,categories,keywords";
-	drun-display-format: "{name} [<span weight='light' size='small'><i>({generic})</i></span>]";
+	/* drun-display-format: "{name} [<span weight='light' size='small'><i>({generic})</i></span>]"; */
+  drun-display-format: "{name}";
 	drun-show-actions: false;
 	drun-url-launcher: "xdg-open";
 	drun-use-desktop-cache: false;
@@ -88,6 +91,7 @@ configuration {
 	threads: 0;
 	click-to-exit: true;
 	hover-select: true;
+
 /*	ignored-prefixes: "";*/
 /*	pid: "/run/user/1000/rofi.pid";*/
 
