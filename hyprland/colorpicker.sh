@@ -1,3 +1,7 @@
 #!/bin/bash
 
-dunstify "Color: \"$(hyprpicker)\" "
+color=$(hyprpicker)
+
+echo -n "$color" | wl-copy
+
+dunstify "Color: $color"

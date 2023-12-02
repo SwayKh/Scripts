@@ -3,23 +3,21 @@
 # uptime=$(uptime -p | sed -e 's/up //g')
 
 # Rofi dmenu mode, -i make search case-insensitive, -l is the number of line
-THEME="/home/sumit/scripts/rofi/powerconfig.rasi"
+THEME="/home/sumit/scripts/rofi/NewSessionMenu.rasi"
 rofi_command() {
   rofi -dmenu \
-        -theme "$THEME" \
-        -i \
+    -theme "$THEME" \
+    -i
 
 }
 
-shutdown="󰐥 | Shutdown" 
+shutdown="󰐥 | Shutdown"
 reboot=" | Restart"
 lock=" | Lock"
 suspend="󰤄 | Suspend"
-logout="󰍂 | Logout" 
+logout="󰍂 | Logout"
 
 options="$shutdown\n$reboot\n$logout\n$suspend\n$lock"
 
 chosen="$(echo -e "$options" | rofi_command)"
 echo "$chosen"
-
-
