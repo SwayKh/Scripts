@@ -1,3 +1,7 @@
+configuration {
+    case-sensitive: false;
+    cycle: true;
+}
 
 /* foreground, blue, darkblue, are set to BBCCDD*/
 * {
@@ -17,37 +21,63 @@
 }
 
 window {
-  //width: 20%;
-  //height: 100%;
-  //orientation: vertical;
-  //location: west;
-  
-  height: 50%;
-  width: 25%;
+  width: 20%;
+  height: 40%;
   orientation: vertical;
-  location: center;
-
+  location: east;
   anchor: center;
-  border: 2px;
+  border: 1px;
   border-color: @foreground;
   border-radius: 10px;
   spacing: 0;
   children: [ mainbox ];
 }
 
+
 mainbox {
   spacing: 0;
-  children: [ inputbar, listview, mode-switcher ];
+  children: [ inputbar, listview ];
+}
+
+
+inputbar {
+    background-color: @darkgray;
+    spacing:          8px;
+    padding:          8px;
+    margin:           0px;
+    border:           0px;
+    border-radius:    0px;
+    border-color:     @darkgray;
+    children:         ["textbox-prompt-colon", entry];
+}
+
+entry {
+    enabled:           true;
+    padding:	       0px 5px;
+    text-color:        @foreground;
+    background-color:  @background;
+}
+
+prompt {
+    padding:	       0px 5px;
+    text-color: @foreground;
+}
+
+textbox-prompt-colon {
+    expand: false;
+    margin: 0px;
+    str: " ";
 }
 
 listview {
-  layout: vertical;
-  padding: 3px;
-  lines: 8;
-  columns: 1;
-  border: 0;
-  scrollbar: false;
-  background-color : @darkgray;
+    layout: vertical;
+    padding:	       0px 5px;
+    lines: 6;
+    columns: 1;
+    border: 0px;
+    margin: 0px;
+    scrollbar: false;
+    background-color : @darkgray;
 }
 
 textbox {
@@ -58,13 +88,9 @@ textbox {
 element {
     orientation: horizontal;
     border:       0;
-    padding:      3px; 
+    padding:      5px;
     text-color: @foreground;
     background-color: @darkgray;
-}
-
-element-icon {
-  size: 48;
 }
 
 element normal.normal {
@@ -72,25 +98,14 @@ element normal.normal {
     text-color:       @foreground;
 }
 
-element normal.urgent {
-    background-color: @red;
-    text-color:       @darkgray;
-}
-
 element normal.active {
-    background-color: @border;
-    text-color:       @darkgray;
+    background-color: @darkgray;
+    text-color:       @foreground;
 }
 
 element selected.normal {
     text-color: @darkgray;
     background-color: @foreground;
-    border-radius:    2px;
-}
-
-element selected.urgent {
-    background-color: @red;
-    text-color:       @darkgray;
 }
 
 element selected.active {
@@ -98,45 +113,8 @@ element selected.active {
     text-color:       @darkgray;
 }
 
-element alternate.normal {
-    background-color: @darkgray;
-    text-color:       @foreground;
-}
-
-element alternate.urgent {
-    background-color: @border;
-    text-color:       @darkgray;
-}
-
-element alternate.active {
-    background-color: @border;
-    text-color:       @darkgray;
-}
-
 element-text {
     cursor:           inherit;
-    highlight:        @background;
+    highlight:        #A1D077;
     text-color:       inherit;
-}
-
-
-entry {
-    enabled:           true;
-    padding:	         8px;
-    text-color:        @foreground;
-    background-color:  @background;
-}
-
-prompt {
-    padding: 0px 0px ;
-    text-color: @foreground;
-}
-
-inputbar {
-    background-color: @darkgray;
-    margin:           0px 0px 0px 0px;
-    border:           8px;
-    border-radius:    6px;
-    border-color:     @darkgray;
-    children:         [entry];
 }
