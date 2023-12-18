@@ -2,10 +2,10 @@
 
 hyprctl dispatch exec [workspace 1 silent] firefox
 sleep 1
-hyprctl dispatch exec [workspace 2 silent] "foot -e nvim"
+hyprctl dispatch exec [workspace 2 silent] "kitty -e nvim"
 sleep 1
-hyprctl dispatch exec [workspace 3 silent] "foot -e lf"
+hyprctl dispatch exec [workspace 3 silent] "kitty -e lf"
 sleep 1
-hyprctl dispatch exec [workspace 4 silent] foot
+hyprctl dispatch exec [workspace 4 silent] kitty
 sleep 1
 hyprctl dispatch exec [workspace 9 silent] obsidian
