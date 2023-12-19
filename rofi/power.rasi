@@ -5,9 +5,8 @@ configuration {
 
 /* foreground, blue, darkblue, are set to BBCCDD*/
 * {
-    font:                           "JetBrainsMono Nerd Font 12";
-
-    foreground:                     #D99887; //#F2C395;
+    font:                           "JetBrainsMono Nerd Font 14";
+    foreground:                     #D99887;
     oldforeground:                  #F5F5F5;
     background:                     #333333;
     highlight:	                    #F5F5F5;
@@ -32,6 +31,7 @@ window {
   border: 1px;
   border-color: @foreground;
   border-radius: 10px;
+  padding: 0px;
   spacing: 0;
   children: [ mainbox ];
 }
@@ -45,7 +45,7 @@ mainbox {
 
 inputbar {
     background-color: @darkblue;
-    spacing:          8px;
+    spacing:          0px;
     padding:          8px;
     margin:           0px;
     border:           0px;
@@ -56,7 +56,7 @@ inputbar {
 
 entry {
     enabled:           true;
-    padding:	       0px 5px;
+    padding:	         0px 5px;
     text-color:        @foreground;
     background-color:  @darkblue;
 }
@@ -96,6 +96,12 @@ element {
     background-color: @darkblue;
 }
 
+element-text {
+    cursor:           inherit;
+    highlight:        #F1EDEE;
+    text-color:       inherit;
+}
+
 element normal.normal {
     background-color: @darkblue;
     text-color:       @foreground;
@@ -116,8 +122,17 @@ element selected.active {
     text-color:       @darkblue;
 }
 
-element-text {
-    cursor:           inherit;
-    highlight:        #A1D077;
-    text-color:       inherit;
+element alternate.normal {
+    background-color: @darkBlue;
+    text-color:       @foreground;
+}
+
+element alternate.urgent {
+    background-color: @darkBlue;
+    text-color:       @foreground;
+}
+
+element alternate.active {
+    background-color: @darkBlue;
+    text-color:       @foreground;
 }
