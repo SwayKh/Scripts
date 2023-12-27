@@ -33,8 +33,14 @@ case $chosen in
   ;;
 "$logout")
   # For Hyprland, Use Command for your WM/DE
-  hyprctl dispatch exit
+  if [[ "$DESKTOP_SESSION" == "hyprland" ]]; then
+    hyprctl dispatch exit
 
+  elif [[ "$DESKTOP_SESSION" == "sway" ]]; then
+    swaymsg exit
+
+  elif [[ "$DESKTOP_SESSION" == "i3" ]]; then
+    i3-msg exit
   # if [[ "$DESKTOP_SESSION" == "Openbox" ]]; then
   # 	openbox --exit
   # elif [[ "$DESKTOP_SESSION" == "bspwm" ]]; then
@@ -43,6 +49,6 @@ case $chosen in
   # 	i3-msg exit
   # elif [[ "$DESKTOP_SESSION" == "xfce" ]]; then
   # 	killall xfce4-session
-  # fi
+  fi
   ;;
 esac
