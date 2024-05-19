@@ -1,0 +1,13 @@
+#! /bin/bash
+#
+# Send notification of active open windows and workspaces via hyprctl.
+# Better than checking all active workspaces
+#
+#
+notify-send "$(hyprctl clients |
+  grep -E "workspace:|class:" |
+  grep -i -v "title:" |
+  grep -i -v "window" |
+  sed 's/^[ \t]*//' |
+  paste -d, - - |
+  awk -F', ' '{print $1 ", " $2}')"

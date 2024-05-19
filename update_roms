@@ -1,0 +1,6 @@
+#! /bin/bash
+
+sudo mount -t auto -v /dev/sda3 /mnt/Roms
+sudo rsync -avhP "$HOME"/Roms/ /mnt/Roms/
+# sudo rsync -avhP "$HOME"/RomsBackup/ /mnt/Roms/Backups/
+tree -L 2 "$HOME"/Roms/ >~/Obsidian/Vault/Archive/RomsList.md

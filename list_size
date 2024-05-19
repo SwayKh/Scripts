@@ -1,0 +1,4 @@
+#! /bin/bash
+#
+# List directory size in the Current directory
+command ls | xargs -d '\n' du -sh | sort -hr

@@ -1,0 +1,8 @@
+#! /bin/bash
+#
+# Convert all images to png, make them 1080p and remove original
+find . -name "*.jpg" -exec mogrify -format png {} \;
+find . -name "*.jpg" -exec rm {} \;
+find . -name "*.webp" -exec mogrify -format png {} \;
+find . -name "*.webp" -exec rm {} \;
+find . -type f -name "*.png" -exec convert {} -resize 1920x1080 -quality 90 {} \;

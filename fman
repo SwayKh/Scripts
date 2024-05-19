@@ -1,0 +1,4 @@
+#! /bin/bash
+#
+# Fzf through man pages
+compgen -c | fzf | xargs man

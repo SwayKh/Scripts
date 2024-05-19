@@ -1,0 +1,5 @@
+#! /bin/bash
+#
+# Grep zsh history, Much worse than <C-r> with fzf
+
+awk -F ";" '{print $2}' "$HISTFILE" | grep "$1" | tac | bat
