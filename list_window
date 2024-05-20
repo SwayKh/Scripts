@@ -9,5 +9,7 @@ notify-send "$(hyprctl clients |
   grep -i -v "title:" |
   grep -i -v "window" |
   sed 's/^[ \t]*//' |
+  sed 's/:.*(/: (/g' |
+  sed 's/class://g' |
   paste -d, - - |
-  awk -F', ' '{print $1 ", " $2}')"
+  awk -F', ' '{print $2 ", " $1}')"
