@@ -5,7 +5,6 @@
 sudo reflector --verbose \
   --latest 10 \
   --fastest 10 \
-  --country 'India,' \
   --age 10 \
   --download-timeout 10 \
   --protocol https \
