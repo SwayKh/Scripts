@@ -1,5 +1,5 @@
 # Can't put this in ~/scripts/function.sh, The shell exits with lf
-lfcd() {
+lfcd_old() {
   tmp="$(mktemp)"
   lf -last-dir-path="$tmp" "$@"
   if [ -f "$tmp" ]; then
@@ -7,6 +7,11 @@ lfcd() {
     rm -f "$tmp"
     [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir" || exit
   fi
+}
+
+lfcd() {
+  # `command` is needed in case `lfcd` is aliased to `lf`
+  cd "$(command lf -print-last-dir "$@")"
 }
 
 pacPreviewAll() {
