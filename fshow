@@ -1,0 +1,21 @@
+#! /bin/bash
+#
+# Git log and Git show wrapper
+
+# ansi flag is needed for the git log colors
+#
+git log \
+  --oneline \
+  --color=always \
+  --format='%C(auto)%h %C(green)%s %C(yellow)%cr' |
+  grep -v HEAD |
+  fzf \
+    --ansi \
+    --no-sort \
+    --layout=reverse \
+    --height=100% \
+    --preview-window=right:50% \
+    --preview='git show {+1} --color=always' \
+    --bind='ctrl-f:preview-page-down' \
+    --bind='ctrl-b:preview-page-up' \
+    --bind='q:abort'
