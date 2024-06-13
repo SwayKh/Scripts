@@ -2,10 +2,14 @@
 #
 # Fuzzy find through dotfiles and scripts
 
-find ~/dotfiles ~/scripts \
+find ~/dotfiles \
   -maxdepth 3 \
   -type f \
   -not -path '*/foot/themes/*' \
   -not -path '*/.git/*' |
-  fzf --cycle --border=rounded --preview='bat $LINES {}' |
+  fzf \
+    --cycle \
+    --border=rounded \
+    --preview-window=right:60% \
+    --preview='bat {} --color=always -p' |
   xargs -r -o nvim
