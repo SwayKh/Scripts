@@ -2,7 +2,7 @@
 
 # Rofi dmenu mode, -i make search case-insensitive, -l is the number of line
 rofi_command() {
-  rofi -dmenu -i -theme-str '@import "~/scripts/rofi/power.rasi"'
+  rofi -dmenu -i -config "~/.config/rofi/power.rasi"
 }
 
 shutdown="󰐥 | Shutdown"
