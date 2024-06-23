@@ -14,6 +14,15 @@ lfcd() {
   cd "$(command lf -print-last-dir "$@")"
 }
 
+yy() {
+  local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+  yazi "$@" --cwd-file="$tmp"
+  if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+    cd -- "$cwd"
+  fi
+  rm -f -- "$tmp"
+}
+
 pacPreviewAll() {
   pacman -Slq | fzf --preview 'pacman -Si {}' --layout=reverse
 }
