@@ -1,10 +1,10 @@
 #! /bin/bash
 
 wall=$(find ~/wallpapers/Images/ -maxdepth 1 | shuf -n 1)
-path="/home/sumit/wallpapers/Images/$wall"
+# path="/home/sumit/wallpapers/Images/$wall"
 
-cp "$path" ~/.config/wall.png &&
-  swww img "$path" \
+cp "$wall" ~/.config/wall.png &&
+  swww img "$wall" \
     --transition-type=any \
     --transition-step=30 \
     --transition-fps=60 \
