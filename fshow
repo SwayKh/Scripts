@@ -19,7 +19,9 @@ if git rev-parse --is-inside-work-tree &>/dev/null; then
       --preview='git show {+1} --color=always' \
       --bind='ctrl-f:preview-page-down' \
       --bind='ctrl-b:preview-page-up' \
-      --bind='q:abort'
+      --bind='ctrl-u:preview-half-page-up' \
+      --bind='ctrl-d:preview-half-page-down' \
+      --bind='ctrl-c:abort'
 else
   echo "You are not inside a Git repository."
 fi
