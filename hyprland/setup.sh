@@ -8,6 +8,6 @@ hyprctl dispatch exec [workspace 3 silent] foot
 sleep 1
 hyprctl dispatch exec [workspace 4 silent] foot
 sleep 1
-hyprctl dispatch exec [workspace 5 silent] "foot -e zsh -ic lf"
+hyprctl dispatch exec [workspace 5 silent] "foot -e zsh -ic lf" #lfMention
 sleep 1
 hyprctl dispatch exec [workspace 6 silent] retroarch
