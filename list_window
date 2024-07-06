@@ -12,4 +12,5 @@ notify-send "$(hyprctl clients |
   sed 's/:.*(/: (/g' |
   sed 's/class://g' |
   paste -d, - - |
+  sort |
   awk -F', ' '{print $2 ", " $1}')"

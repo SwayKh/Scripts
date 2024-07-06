@@ -1,13 +1,21 @@
 #!/bin/bash
 
-hyprctl dispatch exec [workspace 1 silent] firefox
+hyprctl dispatch exec floorp
 sleep 1
-hyprctl dispatch exec [workspace 2 silent] "foot -e nvim ~/dotfiles/"
+hyprctl dispatch togglespecialworkspace term
+sleep 0.5
+hyprctl dispatch togglespecialworkspace lf
+sleep 0.5
+hyprctl dispatch togglespecialworkspace dots
+sleep 0.5
+hyprctl dispatch togglespecialworkspace monitor
 sleep 1
-hyprctl dispatch exec [workspace 3 silent] foot
+hyprctl dispatch exec spotify-launcher
 sleep 1
-hyprctl dispatch exec [workspace 4 silent] foot
+hyprctl dispatch exec retroarch
 sleep 1
-hyprctl dispatch exec [workspace 5 silent] "foot -e zsh -ic lf" #lfMention
+hyprctl dispatch exec obsidian
 sleep 1
-hyprctl dispatch exec [workspace 6 silent] retroarch
+hyprctl dispatch exec ferdium
+sleep 1
+hyprctl dispatch exec webcord
