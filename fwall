@@ -1,0 +1,12 @@
+#! /bin/bash
+
+cd "$HOME"/wallpapers/Images/ || exit
+fzf \
+  --ansi \
+  --disabled \
+  --no-sort \
+  --preview='chafa -f sixel -s "${FZF_PREVIEW_COLUMNS}"x"${FZF_PREVIEW_LINES}" {}' \
+  --preview-window=50% \
+  --height=100% \
+  --bind='enter:execute:set_wall {}' \
+  --bind='q:abort'
