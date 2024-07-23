@@ -23,6 +23,10 @@ yy() {
   rm -f -- "$tmp"
 }
 
+pm() {
+  pacman -Slq | fzf -m --preview='pacman -Si {}' --height 100% --bind='enter:execute(sudo pacman -S {+})+abort'
+}
+
 pacPreviewAll() {
   pacman -Slq | fzf --preview 'pacman -Si {}' --layout=reverse
 }
