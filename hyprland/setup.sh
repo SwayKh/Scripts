@@ -12,16 +12,16 @@ hyprctl dispatch togglespecialworkspace term
 sleep 0.5
 hyprctl dispatch togglespecialworkspace term
 sleep 1
-hyprctl dispatch exec spotify
+hyprctl dispatch exec spotify-launcher
 sleep 1
 hyprctl dispatch exec retroarch
 sleep 1
 hyprctl dispatch exec obsidian
 sleep 1
-hyprctl dispatch togglespecialworkspace spotify
+hyprctl dispatch exec ticktick
+# sleep 1
+# hyprctl dispatch togglespecialworkspace spotify
 # sleep 1
 # hyprctl dispatch exec ferdium
 # sleep 1
 # hyprctl dispatch exec webcord
-# sleep 1
-# hyprctl dispatch exec ticktick

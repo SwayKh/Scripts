@@ -1,6 +1,6 @@
 #! /bin/bash
 #
-# Preview script for fzf used in vairous scripts
+# Preview script for fzf used in various scripts
 
 filetype=$(cliphist decode "$1" | file --mime-type -)
 
