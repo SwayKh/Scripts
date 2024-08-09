@@ -1,0 +1,3 @@
+#!/bin/bash
+
+feh --bg-fill "$(find ~/wallpapers/Images -type f | shuf -n 1)"
