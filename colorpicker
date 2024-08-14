@@ -1,0 +1,7 @@
+#!/bin/bash
+
+color=$(grim -g "$(slurp -b '#00000000' -p)" -t ppm - | magick - -format '%[pixel:p{0,0}]' txt:- | awk 'END{print $3}')
+
+echo -n "$color" | wl-copy
+
+notify-send "Color: $color"
