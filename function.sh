@@ -24,7 +24,7 @@ yy() {
 }
 
 pm() {
-  paru -Slq | fzf -m --preview='paru -Si {}' --height 100% --bind='enter:execute(paru -S {+})+abort'
+  pacman -Slq | fzf -m --preview='pacman -Si {}' --height 100% --bind='enter:execute(paru -S {+})+abort'
 }
 
 pacPreviewAll() {
