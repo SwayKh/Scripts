@@ -4,6 +4,6 @@ location="$HOME"/Pictures/Screenshots/"$(date +'%s_grim.png')"
 
 grim "$location"
 
-cat "location" | wl-copy
+wl-copy <"$location"
 
 notify-send -e "Screenshot Taken"
