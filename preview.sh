@@ -1,141 +1,137 @@
 #!/bin/bash
 
-# Cleanup function
-cleanup() {
-  [[ -n "$thumb_cache" ]] && rm -f "$thumb_cache"
+image() {
+  chafa "$1" -f sixels -s "${FZF_PREVIEW_COLUMNS}"x"${FZF_PREVIEW_LINES}" --polite on
 }
-trap cleanup EXIT
 
-# MIME type of the file
-mime=$(file --mime-type -b "$1" 2>/dev/null)
+batorcat() {
+  file="$1"
+  shift
+  if command -v bat >/dev/null 2>&1; then
+    bat --color=always --style=plain --pager=never "$file" "$@"
+  else
+    cat "$file"
+  fi
+}
 
-# Handle different MIME types
-case "$mime" in
-text/*)
-  # Use bat for text files
-  bat --color=always --style=numbers "$1" 2>/dev/null
+glowormdcat() {
+  file="$1"
+  shift
+  if command -v glow >/dev/null 2>&1; then
+    glow "$file"
+  else
+    mdcat "$file"
+  fi
+}
+
+CACHE="$HOME/.cache/lf/thumbnail.$(stat --printf '%n\0%i\0%F\0%s\0%W\0%Y' -- "$(readlink -f "$1")" | sha256sum | awk '{print $1}'))"
+
+case "$(printf "%s\n" "$(readlink -f "$1")" | awk '{print tolower($0)}')" in
+*.tgz | *.tar.gz) tar tzf "$1" ;;
+*.tar.bz2 | *.tbz2) tar tjf "$1" ;;
+*.tar.txz | *.txz) xz --list "$1" ;;
+*.tar) tar tf "$1" ;;
+*.zip | *.jar | *.war | *.ear | *.oxt) unzip -l "$1" ;;
+*.rar) unrar l "$1" ;;
+*.md)
+  glowormdcat "$1"
   ;;
-inode/directory)
-  tree "$1" 2>/dev/null
+*.7z) 7z l "$1" ;;
+*.[1-8]) man "$1" | col -b ;;
+*.o) nm "$1" ;;
+*.torrent) transmission-show "$1" ;;
+*.iso) iso-info --no-header -l "$1" ;;
+*.odt | *.ods | *.odp | *.sxw) odt2txt "$1" ;;
+*.doc) catdoc "$1" ;;
+*.docx) docx2txt "$1" ;;
+*.xml | *.html) batorcat "$1" ;;
+*.xls | *.xlsx)
+  ssconvert --export-type=Gnumeric_stf:stf_csv "$1" "fd://1" | batorcat --language=csv
   ;;
-image/jpeg | image/png)
-  # Use magick to display images in the terminal using sixel
-  magick "$1" -geometry 800x480 sixel:- 2>/dev/null
+*.wav | *.mp3 | *.flac | *.m4a | *.wma | *.ape | *.ac3 | *.og[agx] | *.spx | *.opus | *.as[fx] | *.mka)
+  exiftool "$1"
   ;;
-application/pdf)
-  # Use pdftotext for PDF files
-  pdftotext "$1" - | head -n 1000 2>/dev/null
+*.pdf)
+  [ ! -f "${CACHE}.jpg" ] &&
+    pdftoppm -jpeg -f 1 -singlefile "$1" "$CACHE"
+  image "${CACHE}.jpg" "$2" "$3" "$4" "$5"
   ;;
-application/epub+zip)
-  # Use epub2txt for EPUB files
-  epub2txt "$1" | head -n 1000 2>/dev/null
+*.epub)
+  [ ! -f "$CACHE" ] &&
+    epub-thumbnailer "$1" "$CACHE" 1024
+  image "$CACHE" "$2" "$3" "$4" "$5"
   ;;
-video/*)
-  # Generate a thumbnail for video files
-  thumb_cache=$(mktemp "${TMPDIR:-/tmp}/thumb_cache.XXXXX.png")
-  ffmpegthumbnailer -i "$1" -o "$thumb_cache" -s 0 2>/dev/null
-  # Display the thumbnail
-  img2sixel <"$thumb_cache" 2>/dev/null
+*.cbz | *.cbr | *.cbt)
+  [ ! -f "$CACHE" ] &&
+    comicthumb "$1" "$CACHE" 1024
+  image "$CACHE" "$2" "$3" "$4" "$5"
   ;;
-application/x-tar | application/gzip | application/x-compressed-tar | application/x-bzip2 | application/x-xz | application/zip | application/x-7z-compressed | application/x-rar-compressed)
-  ~/.config/lf/pistol-static-linux-x86_64 "$1" 2>/dev/null
+*.avi | *.mp4 | *.wmv | *.dat | *.3gp | *.ogv | *.mkv | *.mpg | *.mpeg | *.vob | *.fl[icv] | *.m2v | *.mov | *.webm | *.ts | *.mts | *.m4v | *.r[am] | *.qt | *.divx)
+  [ ! -f "${CACHE}.jpg" ] &&
+    ffmpegthumbnailer -i "$1" -o "${CACHE}.jpg" -s 0 -q 5
+  image "${CACHE}.jpg" "$2" "$3" "$4" "$5"
+  ;;
+*.bmp | *.jpg | *.jpeg | *.png | *.xpm | *.webp | *.tiff | *.gif | *.jfif | *.ico)
+  image "$1" "$2" "$3" "$4" "$5"
+  ;;
+*.svg)
+  [ ! -f "${CACHE}.jpg" ] &&
+    convert "$1" "${CACHE}.jpg"
+  image "${CACHE}.jpg" "$2" "$3" "$4" "$5"
+  ;;
+*.ino)
+  batorcat --language=cpp "$1"
   ;;
 *)
-  # Default: show file details
-  echo "File type: $mime"
-  echo "No preview available for this file type."
+  batorcat "$1"
   ;;
 esac
 
-# image() {
-#   # geometry="$(($2 - 2))x$3"
-#   # chafa "$1" -f sixel -s "$2x$3" --animate off --polite on # | fold -w65535
-#   #
-#   chafa "$1" -f sixels -s "${FZF_PREVIEW_COLUMNS}"x"${FZF_PREVIEW_LINES}"
+# # Cleanup function
+# cleanup() {
+#   [[ -n "$thumb_cache" ]] && rm -f "$thumb_cache"
 # }
+# trap cleanup EXIT
 #
-# batorcat() {
-#   file="$1"
-#   shift
-#   if command -v bat >/dev/null 2>&1; then
-#     bat --color=always --style=plain --pager=never "$file" "$@"
-#   else
-#     cat "$file"
-#   fi
-# }
+# # MIME type of the file
+# mime=$(file --mime-type -b "$1" 2>/dev/null)
 #
-# glowormdcat() {
-#   file="$1"
-#   shift
-#   if command -v glow >/dev/null 2>&1; then
-#     glow "$file"
-#   else
-#     mdcat "$file"
-#   fi
-# }
-
-# image/jpeg | image/png)
-#   image "$1"
-#   ;;
-# application/pdf)
-#   [ ! -f "${CACHE}.jpg" ] &&
-#     pdftoppm -jpeg -f 1 -singlefile "$1" "$CACHE"
-#   image "${CACHE}.jpg" "$2" "$3" "$4" "$5"
+# # Handle different MIME types
+# case "$mime" in
+# text/*)
+#   # Use bat for text files
+#   bat --color=always --style=numbers "$1" 2>/dev/null
 #   ;;
 # inode/directory)
 #   tree "$1" 2>/dev/null
 #   ;;
-# *.tgz | *.tar.gz) tar tzf "$1" ;;
-# *.tar.bz2 | *.tbz2) tar tjf "$1" ;;
-# *.tar.txz | *.txz) xz --list "$1" ;;
-# *.tar) tar tf "$1" ;;
-# *.zip | *.jar | *.war | *.ear | *.oxt) unzip -l "$1" ;;
-# *.rar) unrar l "$1" ;;
-# *.md)
-#   glowormdcat "$1"
+# image/jpeg | image/png | image/svg+xml)
+#   # Use magick to display images in the terminal using sixel
+#   # magick "$1" -geometry 800x480 sixel:- 2>/dev/null
+#   # or use chafa
+#   chafa "$1" -f sixels -s "${FZF_PREVIEW_COLUMNS}"x"${FZF_PREVIEW_LINES}"
 #   ;;
-# *.7z) 7z l "$1" ;;
-# *.[1-8]) man "$1" | col -b ;;
-# *.o) nm "$1" ;;
-# *.torrent) transmission-show "$1" ;;
-# *.iso) iso-info --no-header -l "$1" ;;
-# *.odt | *.ods | *.odp | *.sxw) odt2txt "$1" ;;
-# *.doc) catdoc "$1" ;;
-# *.docx) docx2txt "$1" ;;
-# *.xml | *.html) batorcat "$1" ;;
-# *.xls | *.xlsx)
-#   ssconvert --export-type=Gnumeric_stf:stf_csv "$1" "fd://1" | batorcat --language=csv
+# application/pdf)
+#   # Use pdftotext for PDF files
+#   pdftotext "$1" - | head -n 1000 2>/dev/null
 #   ;;
-# *.wav | *.mp3 | *.flac | *.m4a | *.wma | *.ape | *.ac3 | *.og[agx] | *.spx | *.opus | *.as[fx] | *.mka)
-#   exiftool "$1"
+# application/epub+zip)
+#   # Use epub2txt for EPUB files
+#   epub2txt "$1" | head -n 1000 2>/dev/null
 #   ;;
-# *.epub)
-#   [ ! -f "$CACHE" ] &&
-#     epub-thumbnailer "$1" "$CACHE" 1024
-#   image "$CACHE" "$2" "$3" "$4" "$5"
+# video/*)
+#   # Generate a thumbnail for video files
+#   thumb_cache=$(mktemp "${TMPDIR:-/tmp}/thumb_cache.XXXXX.png")
+#   ffmpegthumbnailer -i "$1" -o "$thumb_cache" -s 0 2>/dev/null
+#   # Display the thumbnail
+#   img2sixel <"$thumb_cache" 2>/dev/null
 #   ;;
-# *.cbz | *.cbr | *.cbt)
-#   [ ! -f "$CACHE" ] &&
-#     comicthumb "$1" "$CACHE" 1024
-#   image "$CACHE" "$2" "$3" "$4" "$5"
-#   ;;
-# *.avi | *.mp4 | *.wmv | *.dat | *.3gp | *.ogv | *.mkv | *.mpg | *.mpeg | *.vob | *.fl[icv] | *.m2v | *.mov | *.webm | *.ts | *.mts | *.m4v | *.r[am] | *.qt | *.divx)
-#   [ ! -f "${CACHE}.jpg" ] &&
-#     ffmpegthumbnailer -i "$1" -o "${CACHE}.jpg" -s 0 -q 5
-#   image "${CACHE}.jpg" "$2" "$3" "$4" "$5"
-#   ;;
-# # *.bmp | *.jpg | *.jpeg | *.png | *.xpm | *.webp | *.tiff | *.gif | *.jfif | *.ico)
-# #   image "$1" "$2" "$3" "$4" "$5"
-# #   ;;
-# *.svg)
-#   [ ! -f "${CACHE}.jpg" ] &&
-#     convert "$1" "${CACHE}.jpg"
-#   image "${CACHE}.jpg" "$2" "$3" "$4" "$5"
-#   ;;
-# *.ino)
-#   batorcat --language=cpp "$1"
+# application/x-tar | application/gzip | application/x-compressed-tar | application/x-bzip2 | application/x-xz | application/zip | application/x-7z-compressed | application/x-rar-compressed)
+#   ~/.config/lf/pistol-static-linux-x86_64 "$1" 2>/dev/null
 #   ;;
 # *)
-#   batorcat "$1"
+#   # Default: show file details
+#   echo "File type: $mime"
+#   echo "No preview available for this file type."
 #   ;;
 # esac
