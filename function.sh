@@ -49,6 +49,15 @@ rename_directories() {
     fi
   done
 }
+most_used() {
+  history |
+    awk '{CMD[$2]++;count++;}END { for (a in CMD)print CMD[a] " " CMD[a]/count*100 "% " a;}' |
+    grep -v "./" |
+    column -c3 -s " " -t |
+    sort -nr |
+    nl |
+    head -n "$1"
+}
 
 # This needs to be defined in root user.
 #  recovery-pacman() {
