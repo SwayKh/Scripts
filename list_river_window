@@ -3,4 +3,4 @@
 # For River
 # Send notification of all running programs app id via lwst
 #
-notify-send "$(lswt | awk 'NR > 1 {print $2}')"
+notify-send "$(lswt | awk 'NR > 1 {print $2}' | sort)"
