@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /usr/bin/env bash
 
 wall=$(find ~/wallpapers/Images/ -maxdepth 1 | shuf -n 1)
 # path="/home/sumit/wallpapers/Images/$wall"

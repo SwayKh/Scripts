@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /usr/bin/env bash
 #
 # Fzf through man pages
 compgen -c | fzf | xargs man

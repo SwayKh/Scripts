@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /usr/bin/env bash
 #
 # Grep zsh history, Much worse than <C-r> with fzf
 

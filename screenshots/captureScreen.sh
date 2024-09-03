@@ -1,4 +1,4 @@
-#!/bin/bash
+#! /usr/bin/env bash
 
 location="$HOME"/Pictures/Screenshots/"$(date +'%s_grim.png')"
 

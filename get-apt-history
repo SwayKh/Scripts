@@ -1,4 +1,4 @@
-#!/bin/bash
+#! /usr/bin/env bash
 #Print apt-get history EXCEPT for upgrades
 # 2017-08-06
 # 2020-10-07    Include packages installed by packagekit

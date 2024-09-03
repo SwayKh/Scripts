@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /usr/bin/env bash
 #
 # For some reason the history command doesn't work inside a script
 # and I can't get the output of .zsh_history

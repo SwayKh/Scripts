@@ -1,4 +1,4 @@
-#!/bin/bash
+#! /usr/bin/env bash
 #
 # For River
 # Send notification of all running programs app id via lwst

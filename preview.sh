@@ -1,4 +1,4 @@
-#!/bin/bash
+#! /usr/bin/env bash
 
 image() {
   chafa "$1" -f sixels -s "${FZF_PREVIEW_COLUMNS}"x"${FZF_PREVIEW_LINES}" --polite on
