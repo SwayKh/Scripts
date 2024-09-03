@@ -8,7 +8,7 @@ fzf \
   --preview='chafa -f sixel -s "${FZF_PREVIEW_COLUMNS}"x"${FZF_PREVIEW_LINES}" {}' \
   --preview-window=50% \
   --height=100% \
-  --bind='enter:execute:set_wall {}' \
+  --bind='enter:execute:set-wall {}' \
   --bind='j:down' \
   --bind='k:up' \
   --bind='q:abort'
