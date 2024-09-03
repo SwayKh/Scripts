@@ -2,7 +2,7 @@
 
 # Rofi dmenu mode, -i make search case-insensitive, -l is the number of line
 rofi_command() {
-  rofi -dmenu -i -config "~/.config/rofi/power.rasi"
+  rofi -dmenu -i -config "$HOME/.config/rofi/power.rasi"
 }
 
 shutdown="󰐥 | Shutdown"
@@ -24,7 +24,8 @@ case $chosen in
   ;;
 "$lock")
   # Install swaylock-effects for better configuration
-  hyprlock
+  # hyprlock
+  swaylock -f
   ;;
 "$suspend")
   mpc -q pause
@@ -35,21 +36,18 @@ case $chosen in
   # For Hyprland, Use Command for your WM/DE
   if [[ "$DESKTOP_SESSION" == "hyprland" ]]; then
     hyprctl dispatch exit
-
   elif [[ "$DESKTOP_SESSION" == "sway" ]]; then
     swaymsg exit
-
   elif [[ "$DESKTOP_SESSION" == "i3" ]]; then
     i3-msg exit
-
   elif [[ "$DESKTOP_SESSION" == "river" ]]; then
     riverctl exit
-  # if [[ "$DESKTOP_SESSION" == "Openbox" ]]; then
-  # 	openbox --exit
-  # elif [[ "$DESKTOP_SESSION" == "bspwm" ]]; then
-  # 	bspc quit
-  # elif [[ "$DESKTOP_SESSION" == "xfce" ]]; then
-  # 	killall xfce4-session
+  elif [[ "$DESKTOP_SESSION" == "Openbox" ]]; then
+    openbox --exit
+  elif [[ "$DESKTOP_SESSION" == "bspwm" ]]; then
+    bspc quit
+  elif [[ "$DESKTOP_SESSION" == "xfce" ]]; then
+    killall xfce4-session
   fi
   ;;
 esac
