@@ -59,7 +59,7 @@ connect() {
   notify-send -t 5000 "Scanning networks..."
   nmcli dev wifi rescan
   local wifinet
-  wifinet=$(nmcli -f SSID,BARS,SECURITY dev wifi list | sed -n '1!p' | sed -E "s/WPA*.?\S/ /g" | sed "s/^--/ /g" | sed "s/  //g" | sed "/--/d" | rofi -dmenu -i -p "  Wifi Network")
+  wifinet=$(nmcli -f SSID,BARS,SECURITY dev wifi list | sed -n '1!p' | sed -E "s/WPA*.?\S/ /g" | sed "s/^--/ /g" | sed "s/  //g" | sed "/--/d" | rofi -dmenu -i -config "$HOME/.config/rofi/regular.rasi" -p "  Wifi Network")
   if [ -z "$wifinet" ]; then
     exit 0
   fi
@@ -74,7 +74,7 @@ password() {
   elif nmcli -f BSSID,SECURITY dev wifi list | grep -w "$bssid" | awk '{print $2}' | grep -q -- "--"; then
     pass=""
   else
-    pass=$(rofi -dmenu -l 1 -P -p "Enter Password ")
+    pass=$(rofi -dmenu -l 1 -config "$HOME/.config/rofi/regular.rasi" -p "Enter Password ")
     if [ -z "$pass" ]; then
       exit 0
     fi
@@ -96,7 +96,7 @@ action() {
 }
 
 # Show menu and handle user choice
-case=$(echo -e "$options" | rofi -dmenu -l 6 -i -p "  WiFi Settings")
+case=$(echo -e "$options" | rofi -dmenu -l 6 -i -config "$HOME/.config/rofi/regular.rasi" -p "  WiFi Settings")
 if [ -z "$case" ]; then
   exit 0
 fi
