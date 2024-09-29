@@ -74,7 +74,7 @@ password() {
   elif nmcli -f BSSID,SECURITY dev wifi list | grep -w "$bssid" | awk '{print $2}' | grep -q -- "--"; then
     pass=""
   else
-    pass=$(rofi -dmenu -l 1 -config "$HOME/.config/rofi/regular.rasi" -p "Enter Password ")
+    pass=$(rofi -dmenu -l 1 -config "$HOME/.config/rofi/regular.rasi" -p " Enter Password")
     if [ -z "$pass" ]; then
       exit 0
     fi
