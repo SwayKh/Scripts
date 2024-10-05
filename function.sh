@@ -11,14 +11,14 @@ lfcd_old() {
 
 lfcd() {
   # `command` is needed in case `lfcd` is aliased to `lf`
-  cd "$(command lf -print-last-dir "$@")"
+  cd "$(command lf -print-last-dir "$@")" || exit
 }
 
 yy() {
   local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
   yazi "$@" --cwd-file="$tmp"
   if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-    cd -- "$cwd"
+    cd -- "$cwd" || exit
   fi
   rm -f -- "$tmp"
 }
@@ -49,6 +49,16 @@ rename_directories() {
     fi
   done
 }
+
+# Taken from a reddit post of fastfetch config
+age() {
+  birth_install=$(stat -c %W /)
+  current=$(date +%s)
+  time_progression=$((current - birth_install))
+  days_difference=$((time_progression / 86400))
+  echo $days_difference days
+}
+
 most_used() {
   history |
     awk '{CMD[$2]++;count++;}END { for (a in CMD)print CMD[a] " " CMD[a]/count*100 "% " a;}' |
