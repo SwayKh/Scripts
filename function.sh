@@ -23,19 +23,18 @@ yy() {
   rm -f -- "$tmp"
 }
 
+# Package Manager
 pm() {
   pacman -Slq | fzf -m --preview='pacman -Si {}' --height 100% --bind='enter:execute(paru -S {+})+abort'
 }
 
-pacPreviewAll() {
-  pacman -Slq | fzf --preview 'pacman -Si {}' --layout=reverse
+# Pacman Preview Explicitly Installed
+ppi() {
+  pacman -Qeq | fzf --preview 'pacman -Qil {}' --height 100% --layout=reverse --bind 'enter:execute(pacman -Qil {} | less)'
 }
 
-pacPreviewInstalled() {
-  pacman -Qeq | fzf --preview 'pacman -Qil {}' --layout=reverse --bind 'enter:execute(pacman -Qil {} | less)'
-}
-
-pacPreviewInstalledAll() {
+# Pacman Preview All Installed
+ppa() {
   pacman -Qq | fzf --preview 'pacman -Qil {}' --layout=reverse --bind 'enter:execute(pacman -Qil {} | less)'
 }
 
