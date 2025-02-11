@@ -24,6 +24,11 @@ glowormdcat() {
   fi
 }
 
+if [ -d "$1" ]; then
+  eza --tree --level=2 --icons=always --color=always --group-directories-first "${1%/}"
+  exit 0
+fi
+
 CACHE="$HOME/.cache/lf/thumbnail.$(stat --printf '%n\0%i\0%F\0%s\0%W\0%Y' -- "$(readlink -f "$1")" | sha256sum | awk '{print $1}'))"
 
 case "$(printf "%s\n" "$(readlink -f "$1")" | awk '{print tolower($0)}')" in
