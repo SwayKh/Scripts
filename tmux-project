@@ -14,7 +14,7 @@ fzf_dir=$(
 )
 
 if [ -n "$fzf_dir" ]; then
-  dir="~/Projects/$fzf_dir"
+  dir="$HOME/Projects/$fzf_dir"
 else
   exit 1
 fi
@@ -29,10 +29,10 @@ if [ "$SESSIONEXISTS" = "" ]; then
   tmux new-session -d -s $session
 
   tmux rename-window -t "$session:1" 'Main'
-  tmux send-keys -t "$session:1" "cd $dir && clear" C-m
+  tmux send-keys -t "$session:1" "cd '$dir' && clear" C-m
   tmux send-keys -t "$session:1" "nvim" C-m
   tmux new-window -t "$session:2" -n "Terminal"
-  tmux send-keys -t "$session:2" "cd $dir && clear" C-m
+  tmux send-keys -t "$session:2" "cd '$dir' && clear" C-m
 
   tmux attach-session -t "$session:1"
 else
