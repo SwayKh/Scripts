@@ -38,13 +38,3 @@ if [ "$SESSIONEXISTS" = "" ]; then
 else
   tmux attach-session -t "$session:1"
 fi
-
-#
-# Make a working project scratchpad with river
-# Replace the go term with a tmux script that cd into project on startup
-# Fix the directory preview for fzf directory search
-# Make send to scratchpad keybind for river
-# Make stickypads in river
-# Fix the toggle/set focused tags for scratchpads
-#
-# fix Yazi configuration changes
