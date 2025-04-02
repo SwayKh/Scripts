@@ -14,14 +14,11 @@ if git rev-parse --is-inside-work-tree &>/dev/null; then
       --ansi \
       --no-sort \
       --layout=reverse \
+      --margin=1% \
       --height=100% \
+      --border=rounded \
       --preview-window=right:50% \
-      --preview='git show {+1} --color=always' \
-      --bind='ctrl-f:preview-page-down' \
-      --bind='ctrl-b:preview-page-up' \
-      --bind='ctrl-u:preview-half-page-up' \
-      --bind='ctrl-d:preview-half-page-down' \
-      --bind='ctrl-c:abort'
+      --preview='git show {+1} --color=always'
 else
   echo "You are not inside a Git repository."
 fi

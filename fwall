@@ -1,13 +1,15 @@
 #! /usr/bin/env bash
 
-cd "$HOME"/wallpapers/Images/ || exit
-fzf \
+# --preview='chafa -f sixel -s "${FZF_PREVIEW_COLUMNS}"x"${FZF_PREVIEW_LINES}" {}' \
+fd . "$HOME/wallpapers/Images/" | fzf \
   --ansi \
   --disabled \
   --no-sort \
-  --preview='chafa -f sixel -s "${FZF_PREVIEW_COLUMNS}"x"${FZF_PREVIEW_LINES}" {}' \
-  --preview-window=50% \
+  --preview '~/scripts/preview.sh {}' \
+  --margin=1% \
   --height=100% \
+  --border=rounded \
+  --preview-window=50% \
   --bind='enter:execute:set-wall {}' \
   --bind='j:down' \
   --bind='k:up' \

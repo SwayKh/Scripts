@@ -10,10 +10,10 @@ fd . ~/dotfiles \
   --color=always |
   fzf \
     --ansi \
+    --no-sort \
+    --margin=10% \
+    --height=100% \
     --border=rounded \
     --preview-window=right:60% \
-    --no-sort \
-    --margin=5% \
-    --height=100% \
     --preview='bat {} --color=always -p' |
   xargs -r -o nvim
