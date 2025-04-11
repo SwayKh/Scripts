@@ -8,4 +8,5 @@ cp "$wall" ~/.config/wall.png &&
     --transition-type=any \
     --transition-step=30 \
     --transition-fps=60 \
-    --transition-duration=1
+    --transition-duration=1 &&
+  hellwal --no-cache -i "$wall"
