@@ -1,0 +1,17 @@
+#! /usr/bin/env bash
+
+walldir="$HOME/wallpapers/Images"
+
+selected=$(fd -c never . $walldir |
+  while read A; do echo -en "$A\x00icon\x1f$A\n"; done |
+  rofi -dmenu \
+    -show-icons \
+    -config "$HOME/.config/rofi/regular.rasi" \
+    -theme-str '
+      window { width: 80%; }
+      listview { lines: 4; columns: 8; cycle:true; }
+      element-icon { size: 128px; }
+      element-text { text-color: rgba(0,0,0,0%); }
+    ')
+
+[[ -n "$selected" ]] && "$HOME/scripts/set-wall" "$selected"
