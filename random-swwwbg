@@ -6,7 +6,7 @@ wall=$(find ~/wallpapers/Images/ -maxdepth 1 | shuf -n 1)
 cp "$wall" ~/.config/wall.png &&
   swww img "$wall" \
     --transition-type=any \
-    --transition-step=30 \
+    --transition-step=60 \
     --transition-fps=60 \
-    --transition-duration=1 &&
+    --transition-duration=.7 &&
   hellwal --no-cache -i "$wall" -b 0.3

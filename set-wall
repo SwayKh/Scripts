@@ -9,7 +9,7 @@
 cp "$1" ~/.config/wall.png &&
   swww img "$1" \
     --transition-type=any \
-    --transition-step=30 \
+    --transition-step=60 \
     --transition-fps=60 \
-    --transition-duration=1 &&
+    --transition-duration=.7 &&
   hellwal --no-cache -i "$1" -b 0.3
