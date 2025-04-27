@@ -11,97 +11,97 @@ Script to get summarized man pages from cheat.sh.
 #### `check-history {pattern}`
 Search zsh_history for previous run command.
 
-#### `./colorpicker`
+#### `colorpicker`
 A color picker script using grim and slurp.
 
-#### `./convert-to-png {opt: directory}`
+#### `convert-to-png {opt: directory}`
 Convert all .jpg and .webp file to png in the current directory, or argument
 directory, using imagemagick. WARNING: it will delete the original files.
 
-#### `./fclip`
+#### `fclip`
 Clipboard history using fzf. Needs cliphist.
 
-#### `./fdots`
-Open any file in ~/dotfiles directory with fzf and neovim. TODO:FIX
+#### `fdots`
+Open any file in ~/dotfiles directory with fzf and neovim.
 
-#### `./fman`
+#### `fman`
 Open man pages using fzf.
 
-#### `./fpreview.sh`
+#### `fpreview.sh`
 previewer script for [fclip](./fclip) script.
 
-#### `./fshow`
+#### `fshow`
 See git commit and diff history using fzf.
 
-#### `./fwall`
+#### `fwall`
 Wallpaper picker script using fzf in ~/wallpapers.
 
-#### `./get-apt-history`
+#### `get-apt-history`
 List packages installed by apt.
 
-#### `./get-ip`
+#### `get-ip`
 Print ipv6 ip address.
 
-#### `./list-river-window`
+#### `list-river-window`
 Send notification for list of all open programs in river.
 
-#### `./list-size`
+#### `list-size`
 Print directory sizes under current directory.
 
-#### `./not-most-used {number}`
+#### `not-most-used {number}`
 Broken script, for list most-used commands in shell, based on zsh_history
 
-#### `./preview.sh`
+#### `preview.sh`
 Versatile terminal preview script for any filetype. Words with TUI filemanagers
 or FZF file lists.
 
-#### `./programs.sh`
+#### `programs.sh`
 Arch Setup script to replicate my setup and install programs on any arch distro.
 
-#### `./project.tmux`
+#### `project.tmux`
 Auto setup a project development setup with tmux. 
 
-#### `./random-fehbg`
+#### `random-fehbg`
 Apply random wallpaper from ~/wallpapers/Images/ using feh.
 
-#### `./random-swaybg`
+#### `random-swaybg`
 Apply random wallpaper from ~/wallpapers/Images/ using swaybg.
 
-#### `./random-swwwbg`
+#### `random-swwwbg`
 Apply random wallpaper from ~/wallpapers/Images/ using swww with animations.
 
-#### `./refresh-mirrors`
+#### `refresh-mirrors`
 Reflector script to update my arch linux mirrors.
 
-#### `./rofi-bluetooth`
+#### `rofi-bluetooth`
 Rofi script to handle all bluetooth functions.
 
-#### `./rofi-power`
+#### `rofi-power`
 Custom powermenu script using rofi.
 
-#### `./rofi-wall`
+#### `rofi-wall`
 Rofi wallpaper selector script. Uses swww to apply wallpapers.
 
-#### `./rofi-wifi`
+#### `rofi-wifi`
 Rofi script to handle all wifi functions.
 
-#### `./set-wall {image path}`
+#### `set-wall {image path}`
 Wallpaper script to apply wallpaper and run hellwal to generate colors
 based on applied wallpapers.
 
-#### `./sync-dots`
+#### `sync-dots`
 Do Not Use, it's a mess.
 
-#### `./update-roms`
+#### `update-roms`
 Create a Roms List in my obsidian notes directory.
 
-#### `./volume {up/down}`
+#### `volume {up/down}`
 Custom Volume script to change volume and send pretty dunst notifications
 
-#### `./wallchange.sh`
+#### `wallchange.sh`
 Wallpaper change script that applies randomised wallpaper with swww. Generated
 colorscheme based on the wallpaper using hellwal. Applies colors to Dunst and
 RiverWM.
 
-#### `./yay-install`
+#### `yay-install`
 Script to install `yay` AUR helper
