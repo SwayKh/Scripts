@@ -1,9 +1,4 @@
 #! /usr/bin/env bash
-
-# If using swaybg
-#
-# killall swaybg
-# cp "$1" ~/.config/wall.png && swaybg -m fill -i "$1" &
 #
 # With Swww, Have swww-daemon running
 cp "$1" ~/.config/wall.png &&

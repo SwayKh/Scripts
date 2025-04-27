@@ -2,7 +2,7 @@
 #
 # For some reason the history command doesn't work inside a script
 # and I can't get the output of .zsh_history
-"$HOME/.zsh_history" |
+cat "$HOME/.zsh_history" |
   awk '{CMD[$2]++;count++;}END { for (a in CMD)print CMD[a] " " CMD[a]/count*100 "% " a;}' |
   grep -v "./" |
   column -c3 -s " " -t |
