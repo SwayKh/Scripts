@@ -1,0 +1,16 @@
+#! /usr/bin/env bash
+
+# OCR script
+
+# Script to take an area screenshot with grim+slurp, and read text contexts
+# using tesseract OCR
+
+location=$(mktemp /tmp/image-XXXXXXXX.png)
+
+grim -g "$(slurp -d)" "$location"
+
+tesseract "$location" "$location" --psm 6
+
+wl-copy <"$location".txt
+
+notify-send "Text copied from Image"
