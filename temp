@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Temperature script for waybar, to work on multiple devices
+
+# Try common thermal zone paths
+for path in /sys/class/thermal/thermal_zone*/temp; do
+  if [[ -r "$path" ]]; then
+    temp=$(<"$path")
+    if [[ "$temp" =~ ^[0-9]+$ && "$temp" -gt 1000 ]]; then
+      celsius=$((temp / 1000))
+      echo "{\"text\": \" ${celsius}°C\", \"tooltip\": \"Temp source: $path\"}"
+      exit 0
+    fi
+  fi
+done
+
+# Fallback if no valid temperature found
+echo '{"text": "N/A", "tooltip": "No readable thermal zone"}'
