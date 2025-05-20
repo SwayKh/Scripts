@@ -1,18 +1,38 @@
 #!/bin/bash
 
-# Temperature script for waybar, to work on multiple devices
+preferred_types=("x86_pkg_temp" "core" "cpu" "package id 0" "Tctl")
 
-# Try common thermal zone paths
-for path in /sys/class/thermal/thermal_zone*/temp; do
-  if [[ -r "$path" ]]; then
-    temp=$(<"$path")
-    if [[ "$temp" =~ ^[0-9]+$ && "$temp" -gt 1000 ]]; then
+# First, try to find a thermal zone with a preferred CPU-related type
+for zone in /sys/class/thermal/thermal_zone*; do
+  type_path="$zone/type"
+  temp_path="$zone/temp"
+
+  if [[ -r "$type_path" && -r "$temp_path" ]]; then
+    type=$(<"$type_path")
+    temp=$(<"$temp_path")
+
+    for keyword in "${preferred_types[@]}"; do
+      if [[ "${type,,}" == *"${keyword,,}"* && "$temp" =~ ^[0-9]+$ && "$temp" -gt 1000 ]]; then
+        celsius=$((temp / 1000))
+        echo "{\"text\": \" ${celsius}°C\", \"tooltip\": \"CPU Temp: $type ($zone)\"}"
+        exit 0
+      fi
+    done
+  fi
+done
+
+# Fallback: any readable temp above 30°C
+for zone in /sys/class/thermal/thermal_zone*; do
+  temp_path="$zone/temp"
+  if [[ -r "$temp_path" ]]; then
+    temp=$(<"$temp_path")
+    if [[ "$temp" =~ ^[0-9]+$ && "$temp" -gt 30000 ]]; then
       celsius=$((temp / 1000))
-      echo "{\"text\": \" ${celsius}°C\", \"tooltip\": \"Temp source: $path\"}"
+      echo "{\"text\": \" ${celsius}°C\", \"tooltip\": \"Fallback zone: $zone\"}"
       exit 0
     fi
   fi
 done
 
-# Fallback if no valid temperature found
-echo '{"text": "N/A", "tooltip": "No readable thermal zone"}'
+# Final fallback
+echo '{"text": "N/A", "tooltip": "No valid CPU thermal zone found"}'
