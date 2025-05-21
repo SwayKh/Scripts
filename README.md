@@ -127,6 +127,11 @@ Do Not Use, it's a mess.
 OCR script, to get text from a image. Uses grim+slurp for image selection, and
 tesseract to read Image.
 
+#### `temp`
+
+A temparature script for waybar, to show temparature on multiple devices,
+without hardcoding temparature thermal-zones
+
 #### `update-roms`
 
 Create a Roms List in my obsidian notes directory.
