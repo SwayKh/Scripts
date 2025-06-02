@@ -101,6 +101,10 @@ Reflector script to update my arch linux mirrors.
 
 Rofi script to handle all bluetooth functions.
 
+#### `rofi-docs`
+
+Rofi script to open pdf documents with zathura.
+
 #### `rofi-power`
 
 Custom powermenu script using rofi.
