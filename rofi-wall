@@ -1,8 +1,8 @@
 #! /usr/bin/env bash
 
 walldir="$HOME/wallpapers/Images"
-lines=4
-columns=8
+lines=5
+columns=10
 icons_size=128
 width=$((columns * icons_size / 8))
 
@@ -16,6 +16,7 @@ selected=$(find $walldir -type f |
   while read -r A; do echo -en "$A\x00icon\x1f$A\n"; done |
   rofi -dmenu \
     -show-icons \
+    -p "Wallpaper" \
     -theme-str "${theme}")
 
 [[ -n "$selected" ]] && "$HOME/scripts/set-wall" "$selected"
