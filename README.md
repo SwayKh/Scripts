@@ -119,7 +119,7 @@ Rofi script to handle all wifi functions.
 
 #### `set-wall {image path}`
 
-Wallpaper script to apply wallpaper and run hellwal to generate colors
+Wallpaper script to apply wallpaper and run Pywal16 to generate colors
 based on applied wallpapers.
 
 #### `sync-dots`
@@ -147,7 +147,7 @@ Custom Volume script to change volume and send pretty dunst notifications
 #### `wallchange.sh`
 
 Wallpaper change script that applies randomised wallpaper with swww. Generated
-colorscheme based on the wallpaper using hellwal. Applies colors to Dunst and
+colorscheme based on the wallpaper using Pywal16. Applies colors to Dunst and
 RiverWM.
 
 #### `yay-install`

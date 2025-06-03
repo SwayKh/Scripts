@@ -1,10 +1,10 @@
 #! /bin/sh
 
-# Change wallpaper and run hellwal
+# Change wallpaper and run Pywal16
 "$HOME/scripts/random-swwwbg"
 
-# Load hellwal colors to apply to borders
-source "$HOME/.cache/hellwal/variables.sh"
+# Load Pywal16 colors to apply to borders
+source "$HOME/.cache/wal/colors.sh"
 
 sleep 0.5
 # Apply colors to RiverWM border

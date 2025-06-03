@@ -3,4 +3,4 @@
 wall=$(find ~/wallpapers/Images/ -maxdepth 1 | shuf -n 1)
 killall swaybg
 cp "$wall" ~/.config/wall.png && swaybg -m fill -i "$wall" &
-hellwal -i "$wall" --no-cache -b 0.3
+wal -n -a 80 -i "$wall"
