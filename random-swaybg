@@ -3,4 +3,4 @@
 wall=$(find ~/wallpapers/Images/ -maxdepth 1 | shuf -n 1)
 killall swaybg
 cp "$wall" ~/.config/wall.png && swaybg -m fill -i "$wall" &
-wal -n -e -c -a 80 -i "$wall"
+wal -n -e -a 80 -i $HOME/.config/wall.png -o $HOME/scripts/wallchange.sh
