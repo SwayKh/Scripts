@@ -2,7 +2,7 @@
 #
 # Fuzzy find through dotfiles and scripts
 
-fd . ~/dotfiles \
+fd . --base-directory="$HOME/dotfiles" \
   --max-depth 3 \
   --type f \
   --exclude '*/foot/themes/*' \
@@ -15,5 +15,5 @@ fd . ~/dotfiles \
     --height=100% \
     --border=rounded \
     --preview-window=right:60% \
-    --preview='bat {} --color=always -p' |
-  xargs -r -o nvim
+    --preview='bat "$HOME/dotfiles/"{} --color=always -p' |
+  xargs -r -o -I{} nvim "$HOME/dotfiles/{}"
