@@ -44,7 +44,7 @@ case $chosen in
   elif [[ "$DESKTOP_SESSION" == "river" ]]; then
     riverctl exit
   elif [[ "$DESKTOP_SESSION" == "niri" ]]; then
-    niri msg action exit
+    niri msg action quit
   elif [[ "$DESKTOP_SESSION" == "Openbox" ]]; then
     openbox --exit
   elif [[ "$DESKTOP_SESSION" == "bspwm" ]]; then
