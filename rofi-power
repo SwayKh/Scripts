@@ -25,7 +25,8 @@ case $chosen in
 "$lock")
   # Install swaylock-effects for better configuration
   # hyprlock
-  swaylock -f
+  # swaylock -f
+  gtklock
   ;;
 "$suspend")
   mpc -q pause
@@ -42,6 +43,8 @@ case $chosen in
     i3-msg exit
   elif [[ "$DESKTOP_SESSION" == "river" ]]; then
     riverctl exit
+  elif [[ "$DESKTOP_SESSION" == "niri" ]]; then
+    niri msg action exit
   elif [[ "$DESKTOP_SESSION" == "Openbox" ]]; then
     openbox --exit
   elif [[ "$DESKTOP_SESSION" == "bspwm" ]]; then
