@@ -1,4 +1,4 @@
-#! /bin/sh
+#! /usr/bin/env bash
 
 # Change Volume and Send Nice notification
 case $1 in
