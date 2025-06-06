@@ -4,7 +4,7 @@
 # Better than checking all active workspaces
 #
 #
-notify-send "$(hyprctl clients |
+windows=$(hyprctl clients |
   grep -E "workspace:|class:" |
   grep -i -v "title:" |
   grep -i -v "window" |
@@ -13,4 +13,10 @@ notify-send "$(hyprctl clients |
   sed 's/class://g' |
   paste -d, - - |
   sort |
-  awk -F', ' '{print $2 ", " $1}')"
+  awk -F', ' '{print $2 ", " $1}')
+
+if [ -z "$windows" ]; then
+  notify-send "No windows open"
+else
+  notify-send "$windows"
+fi

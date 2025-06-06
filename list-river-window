@@ -9,11 +9,17 @@
 # notify-send "$(lswt | awk 'NR > 1 {print $2}' | awk '{ print length, $0 }' | sort -n | cut -d' ' -f2-)"
 
 # Upgraded version that take "quotes" around window titles in consideration
-notify-send "$(lswt | awk '
+windows=$(lswt | awk '
 NR > 1 {
     # Split the line into fields manually while respecting quotes
     match($0, /^[^ ]+ +("[^"]+"|[^ ]+)/, arr);
     app_id = arr[1] == "" ? arr[2] : arr[1];
     gsub(/^"|"$/, "", app_id);  # Remove surrounding quotes
     print length(app_id), app_id
-}' | sort -n | cut -d' ' -f2-)"
+}' | sort -n | cut -d' ' -f2-)
+
+if [ -z "$windows" ]; then
+  notify-send "No windows open"
+else
+  notify-send "$windows"
+fi
