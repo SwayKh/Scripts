@@ -5,17 +5,15 @@ rofi_command() {
   rofi -dmenu -i -config "$HOME/.config/rofi/power.rasi"
 }
 
-shutdown="󰐥 | Shutdown"
-reboot=" | Restart"
-lock=" | Lock"
-suspend="󰤄 | Suspend"
-logout="󰍂 | Logout"
+shutdown=" 󰐥 | Shutdown"
+reboot="  | Restart"
+lock="  | Lock"
+suspend=" 󰤄 | Suspend"
+logout=" 󰍂 | Logout"
 
-options="$shutdown\n$reboot\n$logout\n$suspend\n$lock"
+chosen=$(echo -e "$shutdown\n$reboot\n$logout\n$suspend\n$lock" | rofi_command)
 
-chosen="$(echo -e "$options" | rofi_command)"
-echo "$chosen"
-case $chosen in
+case "$chosen" in
 "$shutdown")
   systemctl poweroff
   ;;
@@ -23,10 +21,15 @@ case $chosen in
   systemctl reboot
   ;;
 "$lock")
-  # Install swaylock-effects for better configuration
-  # hyprlock
-  # swaylock -f
-  gtklock
+  if command -v gtklock &>/dev/null; then
+    gtklock
+  elif command -v swaylock &>/dev/null; then
+    swaylock -f
+  elif command -v hyprlock &>/dev/null; then
+    hyprlock
+  else
+    notify-send "Error: No lock utility found."
+  fi
   ;;
 "$suspend")
   mpc -q pause
@@ -34,23 +37,39 @@ case $chosen in
   systemctl suspend
   ;;
 "$logout")
-  # For Hyprland, Use Command for your WM/DE
-  if [[ "$DESKTOP_SESSION" == "hyprland" ]]; then
-    hyprctl dispatch exit
-  elif [[ "$DESKTOP_SESSION" == "sway" ]]; then
-    swaymsg exit
-  elif [[ "$DESKTOP_SESSION" == "i3" ]]; then
-    i3-msg exit
-  elif [[ "$DESKTOP_SESSION" == "river" ]]; then
-    riverctl exit
-  elif [[ "$DESKTOP_SESSION" == "niri" ]]; then
-    niri msg action quit
-  elif [[ "$DESKTOP_SESSION" == "Openbox" ]]; then
-    openbox --exit
-  elif [[ "$DESKTOP_SESSION" == "bspwm" ]]; then
-    bspc quit
-  elif [[ "$DESKTOP_SESSION" == "xfce" ]]; then
-    killall xfce4-session
-  fi
+  handle_logout
   ;;
 esac
+
+handle_logout() {
+  case "$DESKTOP_SESSION" in
+  hyprland)
+    hyprctl dispatch exit
+    ;;
+  sway)
+    swaymsg exit
+    ;;
+  i3)
+    i3-msg exit
+    ;;
+  river)
+    riverctl exit
+    ;;
+  niri)
+    niri msg action quit
+    ;;
+  Openbox)
+    openbox --exit
+    ;;
+  bspwm)
+    bspc quit
+    ;;
+  xfce)
+    killall xfce4-session
+    ;;
+  *)
+    notify-send "Logout for '$DESKTOP_SESSION' not implemented."
+    exit 1
+    ;;
+  esac
+}
