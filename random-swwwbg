@@ -8,4 +8,4 @@ cp "$wall" ~/.config/wall.png &&
     --transition-step=60 \
     --transition-fps=60 \
     --transition-duration=.7 &&
-  wal -n -e -a 80 -i "$HOME"/.config/wall.png -o "$HOME"/scripts/wallchange.sh
+  wal -n -e -a 80 -i "$HOME/.config/wall.png" -o "$HOME/.config/dunst/launch-dunst.sh"
