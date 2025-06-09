@@ -13,4 +13,5 @@ source "$HOME/.cache/wal/colors.sh"
 # riverctl border-color-unfocused "0x${color1}"
 
 # Restart Dunst with new color
+sleep 1
 "$HOME/.config/dunst/launch-dunst.sh"
