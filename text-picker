@@ -20,7 +20,7 @@ fi
 tesseract "$location" "$location" --psm 6
 
 if [ -s "$location".txt ]; then
-  wl-copy <"$location".txt
+  tr '\n' ' ' <"$location".txt | wl-copy
   notify-send "Text copied from Image"
 else
   notify-send "No text found in image"
