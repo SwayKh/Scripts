@@ -56,9 +56,17 @@ List packages installed by apt.
 
 Print ipv6 ip address.
 
+#### `list-hypr-window`
+
+Send notifications to list all open programs in hyprland
+
+#### `list-niri-window`
+
+Send notifications to list all open programs in Niri
+
 #### `list-river-window`
 
-Send notification for list of all open programs in river.
+Send notification to list of all open programs in river.
 
 #### `list-size`
 
@@ -100,6 +108,10 @@ Reflector script to update my arch linux mirrors.
 #### `rofi-bluetooth`
 
 Rofi script to handle all bluetooth functions.
+
+#### `rofi-clipboard`
+
+Rofi script to show output of cliphist, clipboard history
 
 #### `rofi-docs`
 
