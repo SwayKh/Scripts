@@ -3,4 +3,4 @@
 # sudo mount -t auto -v /dev/sda3 /mnt/Roms
 # sudo rsync -avhP "$HOME"/Roms/ /mnt/Roms/
 # sudo rsync -avhP "$HOME"/RomsBackup/ /mnt/Roms/Backups/
-eza --all --tree -L 2 --icons=never --color=never "$HOME"/Roms/ >~/Obsidian/Vault/Archive/RomsList.md
+eza --all --tree -L 2 --icons=never --color=never "$HOME"/Roms/ >"$HOME"/Obsidian/Vault/Archive/RomsList.md

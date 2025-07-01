@@ -26,7 +26,7 @@ echo ""
 # Confirm Start
 # -----------------------------------------------------
 while true; do
-  read -p "DO YOU WANT TO START THE INSTALLATION NOW? (Yy/Nn): " yn
+  read -r -p "DO YOU WANT TO START THE INSTALLATION NOW? (Yy/Nn): " yn
   case $yn in
   [Yy]*)
     echo "Installation started."
@@ -40,7 +40,7 @@ while true; do
   esac
 done
 git clone https://aur.archlinux.org/yay-git.git
-cd yay-git
+cd yay-git || exit
 makepkg -si
 
 echo "DONE!"

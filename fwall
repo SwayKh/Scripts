@@ -5,7 +5,7 @@ fd . "$HOME/wallpapers/Images/" | fzf \
   --ansi \
   --disabled \
   --no-sort \
-  --preview '~/scripts/preview.sh {}' \
+  --preview "$HOME/scripts/preview.sh {}" \
   --margin=1% \
   --height=100% \
   --border=rounded \

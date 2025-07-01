@@ -18,7 +18,7 @@ if [ "$SESSIONEXISTS" = "" ]; then
         --margin=20% \
         --border=rounded \
         --preview-window=50% \
-        --preview '~/scripts/preview.sh ~/Projects/{}'
+        --preview "$HOME/scripts/preview.sh ~/Projects/{}"
   )
 
   if [ -n "$fzf_dir" ]; then

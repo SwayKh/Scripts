@@ -12,7 +12,7 @@ theme="window { width: ${width}ch; }
       element-icon { size: ${icons_size}px; }
       element-text { text-color: rgba(0,0,0,0%); }"
 
-selected=$(find $walldir -type f |
+selected=$(find "$walldir" -type f |
   while read -r A; do echo -en "$A\x00icon\x1f$A\n"; done |
   rofi -dmenu \
     -show-icons \

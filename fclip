@@ -6,6 +6,6 @@ choice=$(cliphist list | fzf --ansi \
   --color=pointer:1,prompt:4,hl:4,bg+:'#45403d',fg+:7,hl+:1 \
   --prompt='Clip > ' \
   --preview-window=right:50% \
-  --preview='"$HOME"/scripts/fpreview.sh {}')
+  --preview="$HOME/scripts/fpreview.sh {}")
 
 [ -n "$choice" ] && printf '%s' "$choice" | cliphist decode | wl-copy

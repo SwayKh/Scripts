@@ -15,5 +15,5 @@ fd . --base-directory="$HOME/dotfiles" \
     --height=100% \
     --border=rounded \
     --preview-window=right:60% \
-    --preview='bat "$HOME/dotfiles/"{} --color=always -p' |
+    --preview="bat $HOME/dotfiles/{} --color=always -p" |
   xargs -r -o -I{} nvim "$HOME/dotfiles/{}"
