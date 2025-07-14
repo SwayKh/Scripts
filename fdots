@@ -3,15 +3,17 @@
 # Fuzzy find through dotfiles and scripts
 
 fd . --base-directory="$HOME/dotfiles" \
-  --max-depth 3 \
+  --max-depth 5 \
   --type f \
+  --no-hidden \
   --exclude '*/foot/themes/*' \
-  --exclude '*/.git/*' \
+  --exclude .git \
+  --ignore-file ~/home.gitignore \
   --color=always |
   fzf \
     --ansi \
     --no-sort \
-    --margin=10% \
+    --margin=5% \
     --height=100% \
     --border=rounded \
     --preview-window=right:60% \
