@@ -12,7 +12,6 @@ fd . --base-directory="$HOME/dotfiles" \
   --color=always |
   fzf \
     --ansi \
-    --no-sort \
     --margin=5% \
     --height=100% \
     --border=rounded \
