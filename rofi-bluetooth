@@ -304,12 +304,25 @@ show_menu() {
   esac
 }
 
+cli() {
+  if [[ "$1" == "status" ]]; then
+    if power_on; then
+      echo "enabled"
+    else
+      echo "disabled"
+    fi
+    return 0
+  else
+    return 1
+  fi
+}
+
 # Rofi command to pipe into, can add any options here
 rofi_command="rofi -dmenu -config "$HOME/.config/rofi/regular.rasi"  $* -p"
 
 case "$1" in
---status)
-  print_status
+"status")
+  cli $1
   ;;
 *)
   show_menu
