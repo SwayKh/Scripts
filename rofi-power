@@ -28,7 +28,7 @@ case "$chosen" in
   elif command -v hyprlock &>/dev/null; then
     hyprlock
   else
-    notify-send "Error: No lock utility found."
+    notify-send -t 1500 "Error: No lock utility found."
   fi
   ;;
 "$suspend")
@@ -68,7 +68,7 @@ handle_logout() {
     killall xfce4-session
     ;;
   *)
-    notify-send "Logout for '$DESKTOP_SESSION' not implemented."
+    notify-send -t 1500 "Logout for '$DESKTOP_SESSION' not implemented."
     exit 1
     ;;
   esac

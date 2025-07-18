@@ -5,14 +5,14 @@
 # Script to take an area screenshot with grim+slurp, and read text contexts
 # using tesseract OCR
 if ! command -v tesseract >/dev/null 2>&1; then
-  notify-send "Tesseract is not installed"
+  notify-send -t 1500 "Tesseract is not installed"
   exit 1
 fi
 
 location=$(mktemp /tmp/image-XXXXXXXX.png)
 
 if ! grim -g "$(slurp -d)" "$location"; then
-  notify-send "No region selected"
+  notify-send -t 1500 "No region selected"
   rm -f "$location"
   exit 1
 fi
@@ -21,9 +21,9 @@ tesseract "$location" "$location" --psm 6
 
 if [ -s "$location".txt ]; then
   tr '\n' ' ' <"$location".txt | wl-copy
-  notify-send "Text copied from Image"
+  notify-send -t 1500 "Text copied from Image"
 else
-  notify-send "No text found in image"
+  notify-send -t 1500 "No text found in image"
 fi
 
 rm -f "$location" "$location".txt

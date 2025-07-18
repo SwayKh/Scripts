@@ -3,10 +3,10 @@
 color=$(grim -g "$(slurp -b '#00000000' -p)" -t ppm - | magick - -format '%[pixel:p{0,0}]' txt:- | awk 'END{print $3}')
 
 if [ -z "$color" ]; then
-  notify-send "No color selected."
+  notify-send -t 1500 "No color selected."
   exit 1
 fi
 
 echo -n "$color" | wl-copy
 
-notify-send "Color: $color"
+notify-send -t 1500 "Color: $color"

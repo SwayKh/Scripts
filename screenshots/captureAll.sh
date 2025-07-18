@@ -6,4 +6,4 @@ grim "$location"
 
 wl-copy <"$location"
 
-notify-send -e "Screenshot Taken"
+notify-send -t 1500 -e "Screenshot Taken"

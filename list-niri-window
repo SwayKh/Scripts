@@ -11,7 +11,7 @@ windows=$(niri msg windows |
   cut -d' ' -f2-)
 
 if [ -z "$windows" ]; then
-  notify-send "No windows open"
+  notify-send -t 1500 "No windows open"
 else
-  notify-send "$windows"
+  notify-send -t 1500 "$windows"
 fi

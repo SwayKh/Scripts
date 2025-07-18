@@ -6,4 +6,4 @@ grim -g "$(slurp -d -o)" "$location"
 
 wl-copy <"$location"
 
-notify-send "Screenshot Taken"
+notify-send -t 1500 "Screenshot Taken"
