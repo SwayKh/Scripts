@@ -97,9 +97,9 @@ Apply random wallpaper from ~/wallpapers/Images/ using feh.
 
 Apply random wallpaper from ~/wallpapers/Images/ using swaybg.
 
-#### `random-swwwbg`
+#### `random-awwwbg`
 
-Apply random wallpaper from ~/wallpapers/Images/ using swww with animations.
+Apply random wallpaper from ~/wallpapers/Images/ using awww with animations.
 
 #### `refresh-mirrors`
 
@@ -123,7 +123,7 @@ Custom powermenu script using rofi.
 
 #### `rofi-wall`
 
-Rofi wallpaper selector script. Uses swww to apply wallpapers.
+Rofi wallpaper selector script. Uses awww to apply wallpapers.
 
 #### `rofi-wifi`
 
@@ -158,7 +158,7 @@ Custom Volume script to change volume and send pretty dunst notifications
 
 #### `wallchange.sh`
 
-Wallpaper change script that applies randomised wallpaper with swww. Generated
+Wallpaper change script that applies randomised wallpaper with awww. Generated
 colorscheme based on the wallpaper using Pywal16. Applies colors to Dunst and
 RiverWM.
 

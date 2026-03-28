@@ -3,7 +3,7 @@
 wall=$(find ~/wallpapers/Images/ -maxdepth 1 | shuf -n 1)
 
 cp "$wall" ~/.config/wall.png &&
-  swww img "$wall" \
+  awww img "$wall" \
     --transition-type=any \
     --transition-step=60 \
     --transition-fps=60 \

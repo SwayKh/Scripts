@@ -1,8 +1,8 @@
 #! /usr/bin/env bash
 #
-# With Swww, Have swww-daemon running
+# With Awww, Have awww-daemon running
 cp "$1" ~/.config/wall.png &&
-  swww img "$1" \
+  awww img "$1" \
     --transition-type=any \
     --transition-step=60 \
     --transition-fps=60 \

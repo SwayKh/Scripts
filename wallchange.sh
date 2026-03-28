@@ -3,7 +3,7 @@
 # Use this as script to run after Pywal16 runs
 
 # Change wallpaper and run Pywal16
-# "$HOME/scripts/random-swwwbg"
+# "$HOME/scripts/random-awwwbg"
 
 # Load Pywal16 colors to apply to borders
 # source "$HOME/.cache/wal/colors.sh"
